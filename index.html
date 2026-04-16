@@ -9,6 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:'Cairo',sans-serif;
   color:white;
@@ -20,7 +21,8 @@ body{
 body::before{
   content:"";
   position:fixed;
-  width:100%;height:100%;
+  width:100%;
+  height:100%;
   background:rgba(0,0,0,0.75);
   backdrop-filter:blur(10px);
   z-index:-1;
@@ -35,7 +37,19 @@ header{
   backdrop-filter:blur(10px);
 }
 
-.logo{font-size:28px;color:gold;font-weight:bold}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:28px;
+  color:gold;
+  font-weight:bold;
+}
+
+.logo-img{
+  width:40px;
+  height:auto;
+}
 
 .hero{
   display:flex;
@@ -69,8 +83,16 @@ header{
   margin-bottom:15px;
 }
 
-.price{font-size:30px;color:gold;margin:10px 0}
-.old{text-decoration:line-through;color:#aaa}
+.price{
+  font-size:30px;
+  color:gold;
+  margin:10px 0;
+}
+
+.old{
+  text-decoration:line-through;
+  color:#aaa;
+}
 
 .btn{
   background:linear-gradient(45deg,gold,#ffcc00);
@@ -154,68 +176,71 @@ footer{
 <body>
 
 <header>
-<div class="logo">👑 Asel Sultan</div>
-<button class="btn" onclick="scrollToOrder()">اطلب الآن</button>
+  <div class="logo">
+    <img src="crown1.png" class="logo-img">
+    <span>Asel Sultan</span>
+  </div>
+  <button class="btn" onclick="scrollToOrder()">اطلب الآن</button>
 </header>
 
 <section class="hero">
-<img src="product.jpg" class="product-img fade-in">
+  <img src="product.jpg" class="product-img fade-in">
 
-<div class="hero-text fade-in">
-<h1>عسل السلطان بالجنسنغ</h1>
-<p>طاقة 🔥 نشاط ⚡ جودة فاخرة</p>
-<div class="old">200 DH</div>
-<div class="price">150 DH</div>
-<button class="btn" onclick="orderNow()">اطلب عبر واتساب</button>
-</div>
+  <div class="hero-text fade-in">
+    <h1>عسل السلطان بالجنسنغ</h1>
+    <p>طاقة 🔥 نشاط ⚡ جودة فاخرة</p>
+    <div class="old">200 DH</div>
+    <div class="price">150 DH</div>
+    <button class="btn" onclick="orderNow()">اطلب عبر واتساب</button>
+  </div>
 </section>
 
 <section class="section">
-<h2>💎 المميزات</h2>
-<div class="cards">
-<div class="card fade-in">✔ طاقة يومية قوية</div>
-<div class="card fade-in">✔ عسل طبيعي + جينسينغ</div>
-<div class="card fade-in">✔ منتج فاخر ومجرب</div>
-</div>
+  <h2>💎 المميزات</h2>
+  <div class="cards">
+    <div class="card fade-in">✔ طاقة يومية قوية</div>
+    <div class="card fade-in">✔ عسل طبيعي + جينسينغ</div>
+    <div class="card fade-in">✔ منتج فاخر ومجرب</div>
+  </div>
 </section>
 
 <section class="section">
-<h2>⭐ آراء الزبناء</h2>
-<div class="cards">
-<div class="card testimonial fade-in">"منتوج خرافي عطاني طاقة"</div>
-<div class="card testimonial fade-in">"خدمة ممتازة والتوصيل سريع"</div>
-</div>
+  <h2>⭐ آراء الزبناء</h2>
+  <div class="cards">
+    <div class="card testimonial fade-in">"منتوج خرافي عطاني طاقة"</div>
+    <div class="card testimonial fade-in">"خدمة ممتازة والتوصيل سريع"</div>
+  </div>
 </section>
 
 <section class="section" id="order">
-<h2>📦 اطلب الآن</h2>
-<div class="form">
-<input type="text" placeholder="الاسم الكامل">
-<input type="text" placeholder="رقم الهاتف">
-<input type="text" placeholder="المدينة">
-<button class="btn" onclick="sendOrder()">تأكيد الطلب</button>
-</div>
+  <h2>📦 اطلب الآن</h2>
+  <div class="form">
+    <input type="text" placeholder="الاسم الكامل">
+    <input type="text" placeholder="رقم الهاتف">
+    <input type="text" placeholder="المدينة">
+    <button class="btn" onclick="sendOrder()">تأكيد الطلب</button>
+  </div>
 </section>
 
 <footer>© Asel Sultan Premium</footer>
 
 <script>
 function orderNow(){
-window.open('https://wa.me/212665191677?text=بغيت%20نطلب%20Asel%20Sultan');
+  window.open('https://wa.me/212665191677?text=بغيت%20نطلب%20Asel%20Sultan');
 }
 
 function scrollToOrder(){
-document.getElementById('order').scrollIntoView({behavior:'smooth'});
+  document.getElementById('order').scrollIntoView({behavior:'smooth'});
 }
 
 function sendOrder(){
-let inputs=document.querySelectorAll('input');
-let text=`طلب جديد:%0Aالاسم: ${inputs[0].value}%0Aالهاتف: ${inputs[1].value}%0Aالمدينة: ${inputs[2].value}`;
-window.open('https://wa.me/212665191677?text='+text);
+  let inputs=document.querySelectorAll('input');
+  let text=`طلب جديد:%0Aالاسم: ${inputs[0].value}%0Aالهاتف: ${inputs[1].value}%0Aالمدينة: ${inputs[2].value}`;
+  window.open('https://wa.me/212665191677?text='+text);
 }
 
-// Scroll animation
 const elements=document.querySelectorAll('.fade-in');
+
 window.addEventListener('scroll',()=>{
   elements.forEach(el=>{
     const pos=el.getBoundingClientRect().top;
