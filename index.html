@@ -3,263 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asel Sultan Premium</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<title>Asel Sultan 240g</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  font-family:'Cairo',sans-serif;
-  color:white;
-  background:url('background.jpg') no-repeat center center fixed;
-  background-size:cover;
-  overflow-x:hidden;
-}
-
-/* BACKGROUND EFFECT */
-body::before{
-  content:"";
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.2);
-  backdrop-filter:blur(0px);
-  z-index:-1;
-  transition:0.5s;
-}
-
-body.scrolled::before{
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,0.7);
-}
-
-/* HEADER */
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 30px;
-  background:transparent;
-}
-
-/* LOGO */
-.logo img{
-  width:160px;
-  filter:drop-shadow(0 0 10px gold);
-  animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
-
-/* BUTTON */
-.btn{
-  background:linear-gradient(45deg,gold,#ffcc00);
-  color:black;
-  padding:12px 20px;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.btn:hover{
-  transform:scale(1.05);
-}
-
-/* HERO */
-.hero{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:center;
-  padding:60px 20px;
-  gap:40px;
-}
-
-/* ✅ FINAL PRODUCT FIX */
-.product-container{
-  width:320px;
-  height:320px;
-  position:relative;
-  overflow:hidden;
-}
-
-.product-container img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:20px;
-  box-shadow:0 0 40px rgba(255,215,0,0.6);
-  position:absolute;
-  top:0;
-  left:0;
-  opacity:0;
-  transition:opacity 0.6s ease;
-}
-
-/* only visible image */
-.product-container img.active{
-  opacity:1;
-  position:relative;
-}
-
-/* TEXT */
-.hero-text{
-  max-width:400px;
-  text-align:right;
-}
-
-.hero-text h1{
-  font-size:34px;
-  color:gold;
-}
-
-.price{
-  font-size:28px;
-  color:gold;
-}
-
-.old{
-  text-decoration:line-through;
-  color:#aaa;
-}
-
-/* SECTIONS */
-.section{
-  padding:60px 20px;
-  text-align:center;
-}
-
-.cards{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:20px;
-}
-
-.card{
-  background:rgba(0,0,0,0.5);
-  padding:20px;
-  border-radius:15px;
-  backdrop-filter:blur(10px);
-}
-
-/* FORM */
-.form{
-  max-width:400px;
-  margin:auto;
-}
-
-input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:10px;
-  border:none;
-}
-
-footer{
-  padding:20px;
-  text-align:center;
-  color:gold;
-}
+body{margin:0;font-family:Arial;background:#0f0f0f;color:white;text-align:center}
+header{background:black;color:gold;padding:15px;font-size:24px;font-weight:bold}
+.hero{padding:30px}
+.hero img{width:300px;border-radius:15px;box-shadow:0 0 20px gold}
+.price{font-size:26px;color:gold;margin:10px}
+.old{color:#999;text-decoration:line-through;font-size:18px}
+.btn{background:#25D366;color:white;padding:15px 25px;border:none;border-radius:10px;font-size:18px;cursor:pointer}
+.section{padding:25px}
+.box{background:#1c1c1c;margin:10px;padding:15px;border-radius:10px}
+.offer{background:gold;color:black;padding:10px;margin:15px;border-radius:10px;font-weight:bold}
+input{width:90%;padding:12px;margin:8px;border-radius:8px;border:none}
+footer{background:black;color:gold;padding:15px;margin-top:20px}
+.lang{position:fixed;bottom:15px;left:15px}
+.lang button{margin:3px;padding:8px 10px;border:none;border-radius:6px;cursor:pointer}
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">
-    <img src="logo.png">
-  </div>
+<header>🔥 Asel Sultan Original 🔥</header>
 
-  <button class="btn" onclick="scrollToOrder()">اطلب الآن</button>
-</header>
+<div class="hero">
+<img src="PUT-IMAGE.jpg">
 
-<section class="hero">
+<h2 id="title">عسل السلطان بالجنسنغ 💪</h2>
+<p id="desc">منتج طبيعي غني بالطاقة يساعد على النشاط والحيوية اليومية.</p>
+<p id="use">طريقة الاستعمال: ملعقة صغيرة يومياً صباحاً أو قبل النشاط.</p>
 
-  <div class="product-container" id="product">
-    <img src="product1.jpg" class="active">
-    <img src="product2.jpg">
-  </div>
+<div class="old">200 DH</div>
+<div class="price">150 DH فقط</div>
 
-  <div class="hero-text">
-    <h1>عسل السلطان بالجنسنغ</h1>
-    <p>طاقة 🔥 نشاط ⚡ جودة فاخرة</p>
-    <div class="old">200 DH</div>
-    <div class="price">150 DH</div>
-    <button class="btn" onclick="orderNow()">اطلب عبر واتساب</button>
-  </div>
+<p>🚚 داخل الدار البيضاء: التوصيل مجاني</p>
+<p>🚚 خارج الدار البيضاء: +20 درهم</p>
 
-</section>
+<div class="offer">🎯 عرض محدود اليوم فقط</div>
 
-<section class="section">
-  <h2>💎 المميزات</h2>
-  <div class="cards">
-    <div class="card">✔ طاقة يومية قوية</div>
-    <div class="card">✔ عسل طبيعي + جينسينغ</div>
-    <div class="card">✔ منتج فاخر ومجرب</div>
-  </div>
-</section>
+<a href="https://wa.me/212665191677?text=بغيت%20نطلب%20Asel%20Sultan">
+<button class="btn">اطلب الآن</button>
+</a>
+</div>
 
-<section class="section" id="order">
-  <h2>📦 اطلب الآن</h2>
-  <div class="form">
-    <input type="text" placeholder="الاسم الكامل">
-    <input type="text" placeholder="رقم الهاتف">
-    <input type="text" placeholder="المدينة">
-    <button class="btn" onclick="sendOrder()">تأكيد الطلب</button>
-  </div>
-</section>
+<div class="section">
+<h2>💎 المميزات</h2>
+<div class="box">✔ طاقة ونشاط يومي</div>
+<div class="box">✔ عسل طبيعي + جينسينغ</div>
+<div class="box">✔ جودة عالية ومجرب</div>
+</div>
 
-<footer>© Asel Sultan Premium</footer>
+<div class="section">
+<h2>🚚 التوصيل</h2>
+<div class="box">داخل الدار البيضاء: التوصيل مجاني</div>
+<div class="box">خارج الدار البيضاء: +20 درهم</div>
+</div>
+
+<div class="section">
+<h2>⭐ آراء الزبناء</h2>
+<div class="box">"منتوج زوين عطاني طاقة!"</div>
+<div class="box">"التوصيل سريع وخدمة ممتازة"</div>
+</div>
+
+<div class="section">
+<h2>📦 اطلب الآن</h2>
+<input type="text" placeholder="الاسم الكامل">
+<input type="text" placeholder="رقم الهاتف">
+<input type="text" placeholder="المدينة">
+<button class="btn" onclick="sendOrder()">تأكيد الطلب</button>
+</div>
+
+<footer>© Asel Sultan</footer>
 
 <script>
-// BACKGROUND EFFECT
-window.addEventListener("scroll", function(){
-  if(window.scrollY > 100){
-    document.body.classList.add("scrolled");
-  } else {
-    document.body.classList.remove("scrolled");
-  }
-});
-
-// PRODUCT SWITCH
-window.addEventListener("scroll", function(){
-  const product = document.getElementById("product");
-  const images = product.querySelectorAll("img");
-  const trigger = product.offsetTop - 200;
-
-  if(window.scrollY > trigger){
-    images[0].classList.remove("active");
-    images[1].classList.add("active");
-  } else {
-    images[0].classList.add("active");
-    images[1].classList.remove("active");
-  }
-});
-
-// WHATSAPP
-function orderNow(){
-  window.open('https://wa.me/212665191677?text=بغيت%20نطلب%20Asel%20Sultan');
-}
-
-function scrollToOrder(){
-  document.getElementById('order').scrollIntoView({behavior:'smooth'});
-}
-
 function sendOrder(){
-  let inputs=document.querySelectorAll('input');
-  let text=`طلب جديد:%0Aالاسم: ${inputs[0].value}%0Aالهاتف: ${inputs[1].value}%0Aالمدينة: ${inputs[2].value}`;
-  window.open('https://wa.me/212665191677?text='+text);
+let inputs=document.querySelectorAll('input');
+let text=`طلب جديد:%0Aالاسم: ${inputs[0].value}%0Aالهاتف: ${inputs[1].value}%0Aالمدينة: ${inputs[2].value}`;
+window.open('https://wa.me/212665191677?text='+text);
+}
+
+// TRANSLATION SYSTEM
+const translations = {
+  ar: {
+    title: "عسل السلطان بالجنسنغ 💪",
+    desc: "منتج طبيعي غني بالطاقة يساعد على النشاط والحيوية اليومية.",
+    use: "طريقة الاستعمال: ملعقة صغيرة يومياً صباحاً أو قبل النشاط."
+  },
+  fr: {
+    title: "Miel Sultan au Ginseng 💪",
+    desc: "Produit naturel riche en énergie qui améliore la vitalité quotidienne.",
+    use: "Utilisation : une petite cuillère le matin ou avant l'effort."
+  },
+  en: {
+    title: "Sultan Honey with Ginseng 💪",
+    desc: "Natural product rich in energy that boosts vitality and daily performance.",
+    use: "How to use: Take one small spoon daily in the morning or before activity."
+  }
+};
+
+function setLang(lang){
+  document.getElementById('title').innerText = translations[lang].title;
+  document.getElementById('desc').innerText = translations[lang].desc;
+  document.getElementById('use').innerText = translations[lang].use;
 }
 </script>
+
+<div class="lang">
+<button onclick="setLang('ar')">AR</button>
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('en')">EN</button>
+</div>
 
 </body>
 </html>
