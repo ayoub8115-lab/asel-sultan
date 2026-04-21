@@ -843,6 +843,61 @@
         font-size: .9rem;
       }
     }
+  
+    /* SLIDER */
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 12px;
+      z-index: 3;
+    }
+
+    .nav-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: rgba(239,185,77,0.8);
+      color: #000;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .dot.active {
+      background: var(--gold);
+      transform: scale(1.2);
+    }
+
   </style>
 </head>
 <body>
@@ -851,8 +906,16 @@
       <div class="hero">
         <div class="left">
           <div class="visual-frame reveal tilt-on-move" data-tilt>
-            <!-- ضع هنا صورة البرودكت الرئيسية بنفس ستايل الصورة المرجعية -->
-            <img class="main-visual" src="product1.jpg" alt="عسل السلطان" />
+            <!-- SLIDESHOW -->
+            <img id="productSlide" class="main-visual" src="product1.jpg" alt="عسل السلطان" />
+
+            <!-- Controls -->
+            <div class="slider-controls">
+              <button id="prevBtn" class="nav-btn">‹</button>
+              <button id="nextBtn" class="nav-btn">›</button>
+            </div>
+
+            <div class="dots" id="dots"></div>
 
             <div class="glass-note reveal float-soft">
               <div class="topline"><span>👑</span><span>عسل طبيعي</span></div>
@@ -882,6 +945,7 @@
                 <strong>تصميم متقن</strong>
               </div>
             </div>
+          </div>
           </div>
         </div>
 
@@ -1065,6 +1129,59 @@
     });
 
     updateOrder(4);
+
+    /* SLIDESHOW LOGIC */
+    const images = [
+      'product1.jpg',
+      'product2.jpg',
+      'product3.jpg'
+    ];
+
+    let current = 0;
+    const slideImg = document.getElementById('productSlide');
+    const dotsContainer = document.getElementById('dots');
+
+    function renderDots() {
+      dotsContainer.innerHTML = '';
+      images.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.classList.add('dot');
+        if (i === current) d.classList.add('active');
+        d.addEventListener('click', () => {
+          current = i;
+          updateSlide();
+          resetAuto();
+        });
+        dotsContainer.appendChild(d);
+      });
+    }
+
+    function updateSlide() {
+      slideImg.src = images[current];
+      renderDots();
+    }
+
+    function nextSlide() {
+      current = (current + 1) % images.length;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      current = (current - 1 + images.length) % images.length;
+      updateSlide();
+    }
+
+    document.getElementById('nextBtn').onclick = () => { nextSlide(); resetAuto(); };
+    document.getElementById('prevBtn').onclick = () => { prevSlide(); resetAuto(); };
+
+    let interval = setInterval(nextSlide, 3000);
+
+    function resetAuto() {
+      clearInterval(interval);
+      interval = setInterval(nextSlide, 3000);
+    }
+
+    updateSlide();
   </script>
 </body>
 </html>
