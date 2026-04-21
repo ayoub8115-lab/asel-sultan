@@ -198,12 +198,19 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       padding: 12px 6px;
+      direction: rtl;
+      align-items: center;
     }
 
     .strip-item {
       position: relative;
       text-align: center;
       padding: 10px 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
 
     .strip-item:not(:first-child)::before {
@@ -220,13 +227,16 @@
     .strip-item .icon {
       display: block;
       color: var(--gold);
-      font-size: 1.4rem;
-      margin-bottom: 8px;
+      font-size: 1.2rem;
+      margin-bottom: 2px;
+      line-height: 1;
     }
 
     .strip-item strong {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 700;
+      white-space: nowrap;
+      line-height: 1.2;
     }
 
     .right-side {
@@ -838,20 +848,20 @@
 
             <div class="bottom-strip" data-reveal>
               <div class="strip-item">
-                <span class="icon">⚡</span>
-                <strong>100% طبيعي</strong>
-              </div>
-              <div class="strip-item">
-                <span class="icon">⚡</span>
-                <strong>طاقة يومية</strong>
+                <span class="icon">💎</span>
+                <strong>تصميم متقن</strong>
               </div>
               <div class="strip-item">
                 <span class="icon">💧</span>
                 <strong>مذاق غني</strong>
               </div>
               <div class="strip-item">
-                <span class="icon">💎</span>
-                <strong>تصميم متقن</strong>
+                <span class="icon">⚡</span>
+                <strong>طاقة يومية</strong>
+              </div>
+              <div class="strip-item">
+                <span class="icon">⚡</span>
+                <strong>100% طبيعي</strong>
               </div>
             </div>
           </div>
