@@ -148,6 +148,13 @@
       height: 100%;
       object-fit: cover;
       transform: scale(1.02);
+      opacity: 1;
+      transition: opacity .7s ease, transform 1.2s ease;
+    }
+
+    .main-visual.is-fading {
+      opacity: 0;
+      transform: scale(1.06);
     }
 
     .glass-note,
@@ -1140,6 +1147,9 @@
     let current = 0;
     const slideImg = document.getElementById('productSlide');
     const dotsContainer = document.getElementById('dots');
+    const visualFrame = document.querySelector('.visual-frame');
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     function renderDots() {
       dotsContainer.innerHTML = '';
@@ -1150,6 +1160,67 @@
         d.addEventListener('click', () => {
           current = i;
           updateSlide();
+          resetAuto();
+        });
+        dotsContainer.appendChild(d);
+      });
+    }
+
+    function updateSlide() {
+      slideImg.classList.add('is-fading');
+
+      setTimeout(() => {
+        slideImg.src = images[current];
+        slideImg.onload = () => {
+          slideImg.classList.remove('is-fading');
+        };
+        renderDots();
+      }, 260);
+    }
+
+    function nextSlide() {
+      current = (current + 1) % images.length;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      current = (current - 1 + images.length) % images.length;
+      updateSlide();
+    }
+
+    document.getElementById('nextBtn').onclick = () => { nextSlide(); resetAuto(); };
+    document.getElementById('prevBtn').onclick = () => { prevSlide(); resetAuto(); };
+
+    let interval = setInterval(nextSlide, 3000);
+
+    function resetAuto() {
+      clearInterval(interval);
+      interval = setInterval(nextSlide, 3000);
+    }
+
+    /* Mobile swipe support */
+    visualFrame.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    visualFrame.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) < 40) return;
+
+      if (diff < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      resetAuto();
+    }
+
+    updateSlide();
           resetAuto();
         });
         dotsContainer.appendChild(d);
