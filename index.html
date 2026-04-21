@@ -3,1197 +3,926 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>عسل السلطان | Premium Template</title>
+  <title>Asel Sultan Premium</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
-    /*
-      =========================
-      REQUIRED ASSETS
-      =========================
-      background.jpg   -> website background
-      hero-product.jpg -> left big image exactly like the template style
-      logo-main.png    -> top-right logo PNG, tightly cropped
-
-      Optional extra images if you want later:
-      product2.jpg
-      product3.jpg
-    */
-
     :root {
-      --bg: #040200;
-      --panel: rgba(9, 6, 2, 0.94);
-      --panel-soft: rgba(15, 10, 4, 0.9);
-      --panel-card: rgba(18, 12, 5, 0.82);
-      --gold: #efb94c;
-      --gold-deep: #d89825;
-      --gold-line: rgba(239, 185, 76, 0.23);
-      --gold-line-strong: rgba(239, 185, 76, 0.42);
-      --text: #f8f0e2;
-      --muted: #dcc8a5;
-      --green: #10ad41;
-      --green-dark: #0b9537;
-      --danger: #f01414;
-      --radius-shell: 38px;
-      --radius-xl: 30px;
-      --radius-lg: 26px;
-      --radius-md: 22px;
-      --shadow: 0 36px 110px rgba(0, 0, 0, 0.5);
-      --ease: 0.28s ease;
+      --bg: #050301;
+      --panel: rgba(18, 11, 4, 0.92);
+      --panel-2: rgba(28, 17, 7, 0.88);
+      --gold: #f0bf52;
+      --gold-2: #c88a1d;
+      --gold-soft: rgba(240, 191, 82, 0.14);
+      --line: rgba(236, 176, 70, 0.35);
+      --text: #f7f1e8;
+      --muted: #d2c3aa;
+      --green: #11a53a;
+      --green-2: #0a8d31;
+      --shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(202, 128, 18, 0.16), transparent 22%),
+        radial-gradient(circle at 85% 50%, rgba(202, 128, 18, 0.10), transparent 20%),
+        linear-gradient(180deg, #050301 0%, #080502 48%, #050301 100%);
+      color: var(--text);
+      font-family: "Cairo", sans-serif;
     }
 
     body {
-      min-height: 100vh;
-      font-family: 'Cairo', sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 16% 18%, rgba(239,185,76,0.09), transparent 20%),
-        radial-gradient(circle at 85% 15%, rgba(239,185,76,0.06), transparent 18%),
-        linear-gradient(180deg, rgba(0,0,0,0.86), rgba(0,0,0,0.97)),
-        url('background.jpg') center/cover no-repeat fixed;
-      padding: 22px;
+      padding: 42px;
       overflow-x: hidden;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    button,
-    a {
-      font: inherit;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .page {
-      max-width: 1800px;
+    .page-shell {
+      max-width: 1840px;
       margin: 0 auto;
-    }
-
-    .shell {
-      position: relative;
+      background:
+        linear-gradient(180deg, rgba(18, 10, 3, 0.88), rgba(10, 6, 2, 0.92)),
+        url('background.jpg') center/cover no-repeat;
+      border: 1px solid rgba(240, 191, 82, 0.5);
+      border-radius: 36px;
+      box-shadow: 0 0 0 1px rgba(240, 191, 82, 0.08) inset, var(--shadow);
       overflow: hidden;
-      border-radius: var(--radius-shell);
-      border: 1px solid var(--gold-line-strong);
-      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0)), rgba(6, 4, 1, 0.94);
-      box-shadow: var(--shadow);
+      position: relative;
       isolation: isolate;
     }
 
-    .shell::before {
+    .page-shell::before,
+    .page-shell::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(239,185,76,0.06), transparent 20%),
-        radial-gradient(circle at 84% 12%, rgba(239,185,76,0.04), transparent 16%),
-        radial-gradient(circle at 90% 85%, rgba(239,185,76,0.04), transparent 18%);
+      inset: auto;
+      border-radius: 999px;
       pointer-events: none;
       z-index: 0;
+      filter: blur(32px);
+    }
+
+    .page-shell::before {
+      top: -80px;
+      left: -40px;
+      width: 360px;
+      height: 220px;
+      background: rgba(255, 170, 0, 0.12);
+    }
+
+    .page-shell::after {
+      bottom: -120px;
+      right: -60px;
+      width: 420px;
+      height: 280px;
+      background: rgba(255, 142, 0, 0.08);
     }
 
     .hero {
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 41.5% 58.5%;
-      min-height: 980px;
-      direction: ltr;
+      grid-template-columns: 1.05fr 1.45fr;
+      min-height: 960px;
     }
 
-    .left-side,
-    .right-side {
-      padding: 22px;
-      direction: rtl;
-    }
-
-    .left-side {
-      border-inline-end: 1px solid var(--gold-line);
-      order: 1;
-    }
-
-    .right-side {
-      order: 2;
-    }
-
-    .visual-box {
+    .visual-panel,
+    .content-panel {
       position: relative;
-      min-height: 100%;
-      border-radius: 30px;
-      overflow: hidden;
-      border: 1px solid rgba(239,185,76,0.12);
-      background: rgba(255,255,255,0.02);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+      min-width: 0;
     }
 
-    .slide-track {
-      position: relative;
-      width: 100%;
-      height: 100%;
+    .visual-panel {
+      border-left: 1px solid rgba(240, 191, 82, 0.32);
+      padding: 42px 34px 28px;
+      background:
+        linear-gradient(180deg, rgba(12, 7, 2, 0.50), rgba(8, 5, 2, 0.72)),
+        url('background.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .visual-box::after {
+    .visual-panel::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.28));
+      background: radial-gradient(circle at 40% 35%, rgba(241, 173, 56, 0.14), transparent 22%);
       pointer-events: none;
+    }
+
+    .mini-card {
+      width: min(320px, 100%);
+      padding: 18px 22px;
+      border-radius: 28px;
+      border: 1px solid rgba(240, 191, 82, 0.2);
+      background: rgba(23, 14, 6, 0.68);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
+      position: relative;
       z-index: 1;
     }
 
-    .visual-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.01);
-      opacity: 0;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      pointer-events: none;
-    }
-
-    .visual-image.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .visual-image.prev,
-    .visual-image.next {
-      opacity: 0;
-    }
-
-    .glass-card,
-    .bottom-strip {
-      right: 20px;
-      left: 20px;
-      bottom: 20px;
-      border-radius: 24px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      padding: 12px 6px;
-      direction: rtl;
+    .mini-card .topline {
+      display: inline-flex;
       align-items: center;
-    }
-
-    .slide-dots {
-      position: absolute;
-      left: 50%;
-      bottom: 86px;
-      transform: translateX(-50%);
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      direction: ltr;
-    }
-
-    .slide-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(255,255,255,0.35);
-      cursor: pointer;
-      transition: transform 0.25s ease, background 0.25s ease, opacity 0.25s ease;
-      opacity: 0.9;
-    }
-
-    .slide-dot.active {
-      background: var(--gold);
-      transform: scale(1.2);
-      opacity: 1;
-    }
-
-    .slide-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 3;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(239,185,76,0.22);
-      background: rgba(10, 7, 3, 0.58);
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-      backdrop-filter: blur(6px);
-    }
-
-    .slide-nav:hover {
-      background: rgba(239,185,76,0.18);
-      border-color: rgba(239,185,76,0.42);
-      transform: translateY(-50%) scale(1.05);
-    }
-
-    .slide-nav.prev {
-      left: 18px;
-    }
-
-    .slide-nav.next {
-      right: 18px;
-    }
-
-    .strip-item {
-      position: relative;
-      text-align: center;
-      padding: 10px 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .strip-item:not(:first-child)::before {
-      content: "";
-      position: absolute;
-      right: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 52px;
-      background: rgba(239,185,76,0.18);
-    }
-
-    .strip-item .icon {
-      display: block;
+      gap: 10px;
       color: var(--gold);
-      font-size: 1.2rem;
-      margin-bottom: 2px;
-      line-height: 1;
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
     }
 
-    .strip-item strong {
-      font-size: 0.96rem;
+    .mini-card p {
+      margin: 0;
+      color: #ece2d3;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .product-visual {
+      position: relative;
+      margin: 20px auto 0;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 560px;
+    }
+
+    .product-visual img {
+      display: block;
+      max-width: 88%;
+      max-height: 760px;
+      object-fit: contain;
+      filter: drop-shadow(0 35px 55px rgba(0,0,0,0.58));
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .bee {
+      position: absolute;
+      width: 64px;
+      opacity: 0.9;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.35));
+      animation: floatBee 4.8s ease-in-out infinite;
+    }
+
+    .bee-1 { left: 1%; bottom: 16%; }
+    .bee-2 { right: 12%; top: 28%; animation-delay: 1.4s; }
+
+    @keyframes floatBee {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(-4deg); }
+    }
+
+    .left-features {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border-radius: 28px;
+      border: 1px solid rgba(240, 191, 82, 0.32);
+      background: rgba(14, 9, 3, 0.86);
+      overflow: hidden;
+    }
+
+    .left-feature {
+      padding: 20px 12px 18px;
+      text-align: center;
+      border-left: 1px solid rgba(240, 191, 82, 0.18);
+    }
+
+    .left-feature:last-child {
+      border-left: 0;
+    }
+
+    .left-feature .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font-size: 1.45rem;
+    }
+
+    .left-feature .label {
+      font-size: 0.98rem;
+      color: #efe4d2;
+      line-height: 1.5;
       font-weight: 700;
-      white-space: nowrap;
-      line-height: 1.2;
     }
 
-    .right-side {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .content-panel {
+      padding: 42px 30px 28px 32px;
+      background:
+        radial-gradient(circle at 25% 10%, rgba(211, 141, 20, 0.10), transparent 18%),
+        linear-gradient(180deg, rgba(10, 6, 2, 0.56), rgba(9, 5, 2, 0.78));
     }
 
-    .top-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 22px;
+    .brand-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .brand-meta {
+      min-width: 0;
     }
 
     .offer-badge {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      min-height: 64px;
-      padding: 14px 30px;
-      background: rgba(66, 38, 8, 0.6);
-      border: 1px solid rgba(239,185,76,0.24);
+      padding: 12px 26px;
       border-radius: 999px;
-      color: #ffd67b;
-      font-size: 1rem;
+      background: linear-gradient(90deg, rgba(255, 183, 67, 0.18), rgba(111, 67, 7, 0.34));
+      border: 1px solid rgba(240, 191, 82, 0.22);
+      color: var(--gold);
       font-weight: 800;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+      font-size: 1.15rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
     }
 
-    .brand-area {
+    .brand-subtitle {
+      margin-top: 14px;
+      margin-bottom: 8px;
       display: flex;
-      align-items: flex-start;
-      gap: 22px;
-      flex-direction: row-reverse;
+      align-items: center;
+      gap: 16px;
+      color: #dbc3a0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      flex-wrap: wrap;
     }
 
-    .brand-copy {
-      text-align: right;
-      padding-top: 8px;
+    .brand-subtitle .line {
+      width: 64px;
+      height: 2px;
+      background: rgba(240, 191, 82, 0.5);
+      border-radius: 999px;
+    }
+
+    .brand-subtitle .latin {
+      display: block;
+      font-size: 0.95rem;
+      color: #f6efe4;
+      font-weight: 800;
+    }
+
+    .logo-card {
+      width: 332px;
+      max-width: 100%;
+      aspect-ratio: 0.92 / 1;
+      border-radius: 34px;
+      padding: 12px;
+      border: 1px solid rgba(240, 191, 82, 0.22);
+      background: linear-gradient(180deg, rgba(14, 9, 3, 0.98), rgba(8, 5, 2, 0.92));
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02), 0 18px 35px rgba(0,0,0,0.28);
+    }
+
+    .logo-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 42px;
+      border: 3px solid rgba(240, 191, 82, 0.86);
+      clip-path: polygon(50% 0%, 90% 11%, 100% 46%, 100% 82%, 50% 100%, 0% 82%, 0% 46%, 10% 11%);
+      pointer-events: none;
+      box-shadow: 0 0 24px rgba(240, 191, 82, 0.12);
+    }
+
+    .logo-card::after {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 10px;
+      background: radial-gradient(circle, rgba(255,225,167,0.95), rgba(255,225,167,0));
+      filter: blur(2px);
+    }
+
+    .logo-card img {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 82%;
+      height: 82%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
+    }
+
+    h1 {
+      margin: 30px 0 10px;
+      font-size: clamp(3.3rem, 5.7vw, 6.25rem);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #f5efe7;
+    }
+
+    .description {
+      margin: 0 0 24px;
+      max-width: 880px;
+      color: #eee3d2;
+      font-size: clamp(1.2rem, 1.55vw, 2rem);
+      line-height: 1.9;
+    }
+
+    .description .accent {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .chips {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 36px;
     }
 
-    .subline {
+    .chip {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      color: #e8d8ba;
-      font-size: 1rem;
-      margin-bottom: 7px;
+      padding: 16px 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 191, 82, 0.22);
+      background: rgba(18, 11, 4, 0.82);
+      color: #f3e8d9;
+      font-size: 1.18rem;
+      font-weight: 700;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
     }
 
-    .subline::before,
-    .subline::after {
-      content: "";
-      width: 58px;
-      height: 1px;
-      background: rgba(239,185,76,0.48);
+    .chip .icon {
+      color: var(--gold);
+      font-size: 1.5rem;
+      line-height: 1;
     }
 
-    .en-title {
-      font-size: 1.03rem;
-      font-weight: 800;
-      color: #f3ede4;
-    }
-
-    .logo-box {
-      width: 278px;
-      aspect-ratio: 0.88;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 16px;
+    .order-box {
       border-radius: 34px;
-      border: 1px solid rgba(239,185,76,0.3);
-      background: radial-gradient(circle at 50% 0%, rgba(255,215,120,0.18), transparent 24%), rgba(11, 7, 3, 0.93);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 18px 40px rgba(0,0,0,0.22);
+      border: 1px solid rgba(240, 191, 82, 0.22);
+      background: linear-gradient(180deg, rgba(17, 10, 4, 0.96), rgba(11, 7, 3, 0.98));
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .pricing-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-bottom: 1px solid rgba(240, 191, 82, 0.12);
+    }
+
+    .price-card {
+      padding: 30px 24px 28px;
+      text-align: center;
       position: relative;
     }
 
-    .logo-box::after {
+    .price-card + .price-card::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 46%, transparent 72%);
-      transform: translateX(-120%);
-      animation: shine 6.2s ease-in-out infinite;
-      pointer-events: none;
+      right: 0;
+      top: 24px;
+      bottom: 24px;
+      width: 1px;
+      background: rgba(240, 191, 82, 0.16);
     }
 
-    .logo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 0 18px rgba(239,185,76,0.15));
-    }
-
-    .headline h1 {
-      font-size: clamp(4.2rem, 7.9vw, 7.6rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-      font-weight: 900;
+    .price-label {
+      color: #f1e7d9;
+      font-size: 1rem;
       margin-bottom: 10px;
+      font-weight: 700;
     }
 
-    .headline p {
-      max-width: 920px;
-      font-size: 1.08rem;
-      line-height: 1.95;
-      color: #f2e7d7;
-    }
-
-    .highlight {
+    .price-value {
+      font-size: clamp(2.2rem, 3vw, 4rem);
+      font-weight: 900;
       color: var(--gold);
-      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
-    .features-row {
+    .old-price .price-value {
+      color: #f3f0ea;
+      text-decoration: line-through;
+      text-decoration-color: #ff2323;
+      text-decoration-thickness: 5px;
+    }
+
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.95fr;
+      gap: 18px;
+      padding: 18px;
+    }
+
+    .qty-box,
+    .total-box {
+      border-radius: 24px;
+      border: 1px solid rgba(240, 191, 82, 0.15);
+      background: rgba(18, 11, 4, 0.88);
+      padding: 18px;
+    }
+
+    .field-title {
+      margin-bottom: 12px;
+      font-size: 1.08rem;
+      color: #f4ebde;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .qty-options {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .qty-btn {
+      appearance: none;
+      border: 1px solid rgba(240, 191, 82, 0.13);
+      background: rgba(33, 23, 12, 0.9);
+      color: #fff8f0;
+      font-size: 1.1rem;
+      font-weight: 900;
+      border-radius: 18px;
+      min-height: 78px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-family: inherit;
+    }
+
+    .qty-btn:hover,
+    .qty-btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(240, 191, 82, 0.36);
+      outline: none;
+    }
+
+    .qty-btn.active {
+      background: linear-gradient(180deg, #f5c95f, #e4a92b);
+      color: #2b1703;
+      box-shadow: 0 12px 24px rgba(240, 191, 82, 0.18);
+    }
+
+    .total-box {
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .total-box .total-label {
+      font-size: 1.08rem;
+      color: #f6ece0;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .total-box .total-value {
+      color: var(--gold);
+      font-size: clamp(2rem, 2.9vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding: 0 18px 18px;
+    }
+
+    .action-btn {
+      min-height: 112px;
+      border: 0;
+      border-radius: 24px;
+      font-family: inherit;
+      font-size: 1.45rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 16px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      text-decoration: none;
+      padding: 16px 18px;
     }
 
-    .feature-pill,
-    .price-panel,
-    .quantity-panel,
-    .total-panel,
-    .trust-panel {
-      background: rgba(13, 8, 3, 0.82);
-      border: 1px solid rgba(239,185,76,0.14);
-      transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
+    .action-btn:hover {
+      transform: translateY(-2px);
     }
 
-    .feature-pill:hover,
-    .price-panel:hover,
-    .quantity-panel:hover,
-    .total-panel:hover,
-    .trust-panel:hover {
-      transform: translateY(-4px);
-      border-color: rgba(239,185,76,0.28);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.18);
+    .confirm-btn {
+      background: linear-gradient(180deg, #efc154, #d9a336);
+      color: #2c1703;
+      box-shadow: 0 18px 40px rgba(185, 127, 18, 0.25);
     }
 
-    .feature-pill {
-      min-height: 82px;
-      border-radius: 999px;
+    .whatsapp-btn {
+      background: linear-gradient(180deg, var(--green), var(--green-2));
+      color: #fff;
+      box-shadow: 0 18px 40px rgba(17, 165, 58, 0.2);
+      text-align: center;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .whatsapp-btn .main {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      padding: 10px 18px;
-      font-size: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .whatsapp-btn .sub {
+      font-size: 0.95rem;
       font-weight: 700;
+      opacity: 0.9;
     }
 
-    .feature-pill .icon {
-      color: var(--gold);
-      font-size: 1.42rem;
-    }
-
-    .prices-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      overflow: hidden;
-      border-radius: 32px;
-      border: 1px solid rgba(239,185,76,0.14);
-      background: rgba(10, 6, 2, 0.72);
-    }
-
-    .price-panel {
-      min-height: 220px;
-      border: none;
-      border-radius: 0;
-      background: transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-      position: relative;
-    }
-
-    .price-panel:first-child::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 58%;
-      background: rgba(255,255,255,0.16);
-    }
-
-    .panel-label {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #f0e4cd;
-      margin-bottom: 18px;
-    }
-
-    .panel-value {
-      font-size: clamp(3.2rem, 5vw, 5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1;
-    }
-
-    .panel-value.current {
-      color: var(--gold);
-    }
-
-    .panel-value.old {
-      color: rgba(248,240,226,0.86);
-      text-decoration: line-through;
-      text-decoration-color: var(--danger);
-      text-decoration-thickness: 5px;
-    }
-
-    .middle-row {
-      display: grid;
-      grid-template-columns: 58% 42%;
-      gap: 18px;
-    }
-
-    .quantity-panel,
-    .total-panel {
-      min-height: 188px;
-      border-radius: 28px;
-      padding: 24px 28px;
-    }
-
-    .center-title {
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #f4ead5;
-      margin-bottom: 20px;
-    }
-
-    .qty-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 94px);
-      gap: 16px;
-      justify-content: start;
-      direction: ltr;
-    }
-
-    .qty-grid button {
-      height: 78px;
-      border: 1px solid rgba(239,185,76,0.16);
-      border-radius: 20px;
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      cursor: pointer;
-      font-size: 1.18rem;
-      font-weight: 800;
-      transition: transform var(--ease), background var(--ease), box-shadow var(--ease), border-color var(--ease);
-    }
-
-    .qty-grid button.active,
-    .qty-grid button:hover {
-      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
-      color: #1d1204;
-      border-color: transparent;
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(239,185,76,0.22);
-    }
-
-    .total-panel {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .total-value {
-      font-size: clamp(3rem, 4.7vw, 4.4rem);
-      font-weight: 900;
-      color: var(--gold);
-      letter-spacing: -0.04em;
-    }
-
-    .buttons-row {
-      display: grid;
-      grid-template-columns: 56% 44%;
-      gap: 18px;
-    }
-
-    .confirm-btn,
-    .wa-btn {
-      position: relative;
-      overflow: hidden;
-      min-height: 108px;
-      border: none;
-      border-radius: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 18px 28px 18px 30px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform var(--ease), filter var(--ease), box-shadow var(--ease);
-    }
-
-    .confirm-btn:hover,
-    .wa-btn:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.03);
-    }
-
-    .confirm-btn::before,
-    .wa-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.08) 45%, transparent 70%);
-      transform: translateX(-120%);
-      animation: shine 5.6s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .confirm-btn {
-      background: linear-gradient(135deg, #f3c154, #dda130);
-      color: #1f1304;
-      box-shadow: 0 18px 40px rgba(239,185,76,0.2);
-    }
-
-    .wa-btn {
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      color: #fff;
-      box-shadow: 0 18px 40px rgba(16,173,65,0.22);
-    }
-
-    .btn-icon-wrap {
-      width: 74px;
-      height: 74px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 auto;
-      order: 2;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .confirm-btn .btn-icon-wrap {
-      background: rgba(0,0,0,0.05);
-      border-color: rgba(0,0,0,0.08);
-    }
-
-    .wa-btn .btn-icon-wrap {
-      animation: whatsappPulse 2.2s infinite;
-    }
-
-    .confirm-btn svg,
-    .wa-btn svg {
-      width: 38px;
-      height: 38px;
-      fill: currentColor;
-      display: block;
-    }
-
-    .btn-copy {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      text-align: right;
-      order: 1;
-      flex: 1;
-      min-width: 0;
-      line-height: 1.08;
-    }
-
-    .btn-copy strong {
-      font-size: 1.22rem;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .btn-copy small {
-      margin-top: 8px;
-      font-size: 0.98rem;
-      font-weight: 700;
-      opacity: 0.86;
-      white-space: nowrap;
-    }
-
-    .trust-row {
+    .bottom-features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 16px;
+      padding: 8px 18px 18px;
     }
 
-    .trust-panel {
-      min-height: 104px;
-      border-radius: 24px;
+    .bottom-item {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 18px 22px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(240, 191, 82, 0.13);
+      background: rgba(18, 11, 4, 0.84);
     }
 
-    .trust-icon-wrap {
-      width: 60px;
-      height: 60px;
+    .bottom-item .icon-wrap {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 auto;
-      background: rgba(239,185,76,0.1);
-      border: 1px solid rgba(239,185,76,0.18);
+      display: grid;
+      place-items: center;
+      background: rgba(239, 191, 82, 0.12);
+      border: 1px solid rgba(240, 191, 82, 0.16);
+      color: var(--gold);
+      font-size: 1.55rem;
     }
 
-    .trust-panel svg {
-      width: 28px;
-      height: 28px;
-      stroke: var(--gold);
-      stroke-width: 1.9;
-      fill: none;
-    }
-
-    .trust-panel strong {
+    .bottom-item .text strong {
       display: block;
-      font-size: 1.02rem;
-      margin-bottom: 4px;
+      font-size: 1.15rem;
+      color: #f4e8d7;
+      margin-bottom: 2px;
     }
 
-    .trust-panel small {
+    .bottom-item .text span {
+      color: #cdbda6;
       font-size: 0.96rem;
-      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 700;
     }
 
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
-    [data-reveal].is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @keyframes shine {
-      0% { transform: translateX(-120%); }
-      50%, 100% { transform: translateX(130%); }
-    }
-
-    @keyframes whatsappPulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255,255,255,0.12), 0 0 0 0 rgba(16,173,65,0.35);
-      }
-      70% {
-        transform: scale(1.06);
-        box-shadow: 0 0 0 12px rgba(255,255,255,0), 0 0 0 18px rgba(16,173,65,0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255,255,255,0), 0 0 0 0 rgba(16,173,65,0);
-      }
+    .inline-icon {
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: middle;
+      fill: currentColor;
     }
 
     @media (max-width: 1440px) {
-      .logo-box {
-        width: 236px;
+      .hero {
+        grid-template-columns: 0.95fr 1.3fr;
       }
 
-      .qty-grid {
-        grid-template-columns: repeat(4, 82px);
+      .logo-card {
+        width: 260px;
+      }
+
+      .content-panel,
+      .visual-panel {
+        padding-top: 28px;
+      }
+
+      .description {
+        font-size: 1.28rem;
       }
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1180px) {
+      body {
+        padding: 20px;
+      }
+
       .hero {
         grid-template-columns: 1fr;
-        direction: rtl;
       }
 
-      .left-side {
-        border-inline-end: none;
-        border-bottom: 1px solid var(--gold-line);
+      .visual-panel {
+        border-left: 0;
+        border-bottom: 1px solid rgba(240, 191, 82, 0.28);
+        min-height: auto;
       }
 
-      .visual-box {
-        min-height: 760px;
+      .brand-row {
+        grid-template-columns: 1fr;
       }
 
-      .top-row {
-        flex-direction: column;
-      }
-
-      .brand-area {
-        width: 100%;
-        justify-content: space-between;
+      .logo-card {
+        width: min(320px, 100%);
+        margin-inline-start: auto;
       }
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 820px) {
       body {
-        padding: 10px;
-        background-attachment: scroll;
+        padding: 12px;
       }
 
-      .shell {
+      .page-shell {
         border-radius: 24px;
       }
 
-      .left-side,
-      .right-side {
-        padding: 14px;
+      .visual-panel,
+      .content-panel {
+        padding: 18px 14px 16px;
       }
 
-      .visual-box {
-        min-height: 520px;
+      .mini-card {
+        width: 100%;
       }
 
-      .slide-nav {
-        width: 38px;
-        height: 38px;
-      }
-
-      .slide-dots {
-        bottom: 78px;
-      }
-
-      .glass-card {
-        top: 18px;
-        left: 18px;
-        min-width: auto;
-        max-width: calc(100% - 36px);
-      }
-
-      .bottom-strip {
-        grid-template-columns: repeat(2, 1fr);
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-      }
-
-      .strip-item:not(:first-child)::before {
-        display: none;
-      }
-
-      .brand-area,
-      .features-row,
-      .prices-wrap,
-      .middle-row,
-      .buttons-row,
-      .trust-row {
+      .left-features,
+      .bottom-features,
+      .order-grid,
+      .action-row,
+      .pricing-row {
         grid-template-columns: 1fr;
-        flex-direction: column;
       }
 
-      .brand-area {
-        align-items: flex-start;
+      .left-feature,
+      .price-card + .price-card::before {
+        border-left: 0;
       }
 
-      .logo-box {
-        width: 190px;
-      }
-
-      .headline h1 {
-        font-size: clamp(2.8rem, 12vw, 4.5rem);
-      }
-
-      .price-panel:first-child::after {
-        display: none;
-      }
-
-      .qty-grid {
+      .qty-options {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .btn-copy strong,
-      .btn-copy small {
-        white-space: normal;
+      .action-btn {
+        min-height: 92px;
       }
 
-      .confirm-btn,
-      .wa-btn {
-        min-height: 96px;
-        padding: 16px 20px;
+      .product-visual {
+        min-height: 380px;
       }
 
-      .btn-icon-wrap {
-        width: 58px;
-        height: 58px;
+      .product-visual img {
+        max-width: 96%;
       }
 
-      .confirm-btn svg,
-      .wa-btn svg {
-        width: 30px;
-        height: 30px;
+      .chips {
+        gap: 12px;
+      }
+
+      .chip {
+        width: 100%;
+        justify-content: center;
+        font-size: 1.03rem;
+      }
+
+      .bottom-item {
+        padding: 16px;
+      }
+
+      .logo-card {
+        width: 220px;
       }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="shell">
-      <div class="hero">
-        <div class="left-side">
-          <div class="visual-box" data-reveal>
-            <div class="slide-track" id="slideTrack">
-              <img class="visual-image active" src="hero-product.jpg" alt="عسل السلطان" onerror="this.onerror=null;this.src='product1.jpg';" />
-              <img class="visual-image" src="product1.jpg" alt="عسل السلطان" />
-              <img class="visual-image" src="product2.jpg" alt="عسل السلطان" />
-              <img class="visual-image" src="product3.jpg" alt="عسل السلطان" />
+  <main class="page-shell">
+    <section class="hero">
+      <aside class="content-panel">
+        <div class="brand-row">
+          <div class="brand-meta">
+            <div class="offer-badge">
+              <span>🔥</span>
+              <span>عرض خاص لفترة محدودة</span>
             </div>
 
-            <button class="slide-nav prev" id="prevSlide" type="button" aria-label="Previous slide">&#10094;</button>
-            <button class="slide-nav next" id="nextSlide" type="button" aria-label="Next slide">&#10095;</button>
-            <div class="slide-dots" id="slideDots"></div>
-
-            <div class="glass-card" data-reveal>
-              <div class="row"><span>👑</span><span>عسل طبيعي</span></div>
-              <p>مظهر فاخر وثقة أكبر للعميل</p>
+            <div class="brand-subtitle">
+              <span class="line"></span>
+              <div>
+                منتج طبيعي فاخر
+                <span class="latin">Asel Sultan Premium</span>
+              </div>
+              <span class="line"></span>
             </div>
+          </div>
 
-            <div class="bottom-strip" data-reveal>
-              <div class="strip-item">
-                <span class="icon">💎</span>
-                <strong>تصميم متقن</strong>
-              </div>
-              <div class="strip-item">
-                <span class="icon">💧</span>
-                <strong>مذاق غني</strong>
-              </div>
-              <div class="strip-item">
-                <span class="icon">⚡</span>
-                <strong>طاقة يومية</strong>
-              </div>
-              <div class="strip-item">
-                <span class="icon">⚡</span>
-                <strong>100% طبيعي</strong>
-              </div>
-            </div>
+          <div class="logo-card">
+            <img src="logo.png" alt="Asel Sultan Premium Logo" />
           </div>
         </div>
 
-        <div class="right-side">
-          <div class="top-row" data-reveal>
-            <div class="offer-badge"><span>🔥</span><span>عرض خاص لفترة محدودة</span></div>
+        <h1>عسل السلطان</h1>
+        <p class="description">
+          عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنحك تجربة شراء
+          <span class="accent">أوضح، أسرع، وأكثر احترافية</span>
+          على جميع الأجهزة.
+        </p>
 
-            <div class="brand-area">
-              <div class="logo-box" data-reveal>
-                <img src="logo-main.png" alt="Asel Sultan Logo" onerror="this.onerror=null;this.src='logo.png';" />
-              </div>
-              <div class="brand-copy">
-                <div class="subline">منتج طبيعي فاخر</div>
-                <div class="en-title">Asel Sultan Premium</div>
-              </div>
+        <div class="chips">
+          <div class="chip"><span class="icon">🍃</span><span>100% طبيعي</span></div>
+          <div class="chip"><span class="icon">💧</span><span>طاقة غني</span></div>
+          <div class="chip"><span class="icon">⚡</span><span>مذاق غني</span></div>
+          <div class="chip"><span class="icon">💎</span><span>تصميم متقن</span></div>
+        </div>
+
+        <section class="order-box" aria-labelledby="order-box-title">
+          <h2 id="order-box-title" class="sr-only">تفاصيل الطلب</h2>
+
+          <div class="pricing-row">
+            <div class="price-card old-price">
+              <div class="price-label">السعر قبل التخفيض</div>
+              <div class="price-value">DH 200</div>
+            </div>
+            <div class="price-card">
+              <div class="price-label">السعر الحالي</div>
+              <div class="price-value">DH 150</div>
             </div>
           </div>
 
-          <div class="headline" data-reveal>
-            <h1>عسل السلطان</h1>
-            <p>
-              عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنحك تجربة شراء
-              <span class="highlight">أوضح، أسرع، وأكثر احترافية</span>
-              على جميع الأجهزة.
-            </p>
-          </div>
-
-          <div class="features-row" data-reveal>
-            <div class="feature-pill"><span class="icon">🍃</span><span>100% طبيعي</span></div>
-            <div class="feature-pill"><span class="icon">💧</span><span>طاقة غني</span></div>
-            <div class="feature-pill"><span class="icon">⚡</span><span>مذاق غني</span></div>
-            <div class="feature-pill"><span class="icon">💎</span><span>تصميم متقن</span></div>
-          </div>
-
-          <div class="prices-wrap" data-reveal>
-            <div class="price-panel">
-              <div class="panel-label">السعر قبل التخفيض</div>
-              <div class="panel-value old">DH 200</div>
-            </div>
-            <div class="price-panel">
-              <div class="panel-label">السعر الحالي</div>
-              <div class="panel-value current" id="unitPrice">DH 150</div>
-            </div>
-          </div>
-
-          <div class="middle-row" data-reveal>
-            <div class="quantity-panel">
-              <div class="center-title">الكمية</div>
-              <div class="qty-grid" id="qtyButtons">
-                <button type="button" class="active" data-qty="4">+4</button>
-                <button type="button" data-qty="3">3</button>
-                <button type="button" data-qty="2">2</button>
-                <button type="button" data-qty="1">1</button>
-              </div>
-            </div>
-
-            <div class="total-panel">
+          <div class="order-grid">
+            <div class="total-box">
               <div>
-                <div class="center-title">الإجمالي</div>
+                <div class="total-label">الإجمالي</div>
                 <div class="total-value" id="totalPrice">DH 600</div>
               </div>
             </div>
+
+            <div class="qty-box">
+              <div class="field-title">الكمية</div>
+              <div class="qty-options">
+                <button class="qty-btn" type="button" data-qty="1">1</button>
+                <button class="qty-btn" type="button" data-qty="2">2</button>
+                <button class="qty-btn" type="button" data-qty="3">3</button>
+                <button class="qty-btn active" type="button" data-qty="4">+4</button>
+              </div>
+            </div>
           </div>
 
-          <div class="buttons-row" data-reveal>
-            <button class="confirm-btn" id="confirmBtn" type="button">
-              <span class="btn-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M6 7.5A2.5 2.5 0 0 1 8.5 5h7A2.5 2.5 0 0 1 18 7.5V9h1a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9a1 1 0 0 1 1-1h1V7.5Zm2.5-1A1.5 1.5 0 0 0 7 7.5V9h10V7.5A1.5 1.5 0 0 0 15.5 6.5h-7Z"></path>
-                </svg>
-              </span>
-              <span class="btn-copy">
-                <strong>تأكيد الطلب</strong>
-              </span>
-            </button>
-
-            <a class="wa-btn" id="whatsappBtn" href="#" target="_blank" rel="noopener noreferrer">
-              <span class="btn-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M20.52 3.48A11.91 11.91 0 0 0 12.03 0C5.39 0 .01 5.38.01 12c0 2.12.56 4.18 1.62 6L0 24l6.18-1.61A11.94 11.94 0 0 0 12.03 24c6.63 0 12.01-5.38 12.01-12 0-3.2-1.25-6.21-3.52-8.52zM12.03 21.82c-1.88 0-3.72-.5-5.32-1.45l-.38-.22-3.67.96.98-3.57-.24-.37a9.77 9.77 0 0 1-1.5-5.18c0-5.42 4.41-9.83 9.83-9.83 2.63 0 5.1 1.02 6.96 2.89a9.77 9.77 0 0 1 2.88 6.94c0 5.42-4.41 9.83-9.83 9.83zm5.42-7.35c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.49-.9-.8-1.5-1.79-1.67-2.09-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.52s1.08 2.93 1.23 3.13c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.49 1.72.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.27-.2-.57-.35z"></path>
-                </svg>
-              </span>
-              <span class="btn-copy">
-                <strong>اطلب عبر واتساب</strong>
-                <small>تواصل مباشر وسريع</small>
-              </span>
+          <div class="action-row">
+            <a
+              class="action-btn whatsapp-btn"
+              id="whatsappBtn"
+              href="https://wa.me/212600000000?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B3%D9%84%20%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86%20-%204%20%D8%B9%D9%84%D8%A8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="main">
+                <span style="font-size: 1.6rem;">🟢</span>
+                <span>اطلب عبر واتساب</span>
+              </div>
+              <div class="sub">تواصل مباشر وسريع</div>
             </a>
+
+            <button class="action-btn confirm-btn" id="confirmBtn" type="button">
+              <span style="font-size: 1.5rem;">👜</span>
+              <span>تأكيد الطلب</span>
+            </button>
           </div>
 
-          <div class="trust-row" data-reveal>
-            <div class="trust-panel">
-              <span class="trust-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M3 7h13l5 5v5a2 2 0 0 1-2 2h-1"></path><path d="M3 7v10a2 2 0 0 0 2 2h1"></path><path d="M8 19a2 2 0 1 0 0 .01"></path><path d="M17 19a2 2 0 1 0 0 .01"></path><path d="M3 11h12"></path></svg>
-              </span>
-              <div>
-                <strong>توصيل سريع</strong>
-                <small>لكل المدن</small>
-              </div>
-            </div>
-
-            <div class="trust-panel">
-              <span class="trust-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>
-              </span>
-              <div>
-                <strong>جودة مضمونة</strong>
-                <small>أعلى معايير الجودة</small>
-              </div>
-            </div>
-
-            <div class="trust-panel">
-              <span class="trust-icon-wrap" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M7 15h4"></path><path d="M15 10h3"></path><circle cx="15" cy="14" r="1"></circle></svg>
-              </span>
-              <div>
+          <div class="bottom-features">
+            <div class="bottom-item">
+              <div class="icon-wrap">💵</div>
+              <div class="text">
                 <strong>دفع عند الاستلام</strong>
-                <small>راحة وأمان</small>
+                <span>راحة وأمان</span>
               </div>
             </div>
+            <div class="bottom-item">
+              <div class="icon-wrap">🛡️</div>
+              <div class="text">
+                <strong>جودة مضمونة</strong>
+                <span>أعلى معايير الجودة</span>
+              </div>
+            </div>
+            <div class="bottom-item">
+              <div class="icon-wrap">🚚</div>
+              <div class="text">
+                <strong>توصيل سريع</strong>
+                <span>لكل المدن</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <aside class="visual-panel">
+        <div class="mini-card">
+          <div class="topline">
+            <span>👑</span>
+            <span>عسل طبيعي</span>
+          </div>
+          <p>مظهر فاخر وثقة أكبر للعميل</p>
+        </div>
+
+        <div class="product-visual">
+          <img src="product1.jpg" alt="منتج عسل السلطان" />
+          <img src="product2.jpg" alt="" class="bee bee-1" aria-hidden="true" />
+          <img src="product3.jpg" alt="" class="bee bee-2" aria-hidden="true" />
+        </div>
+
+        <div class="left-features">
+          <div class="left-feature">
+            <div class="icon">💎</div>
+            <div class="label">تصميم متقن</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">💧</div>
+            <div class="label">مذاق غني</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">⚡</div>
+            <div class="label">طاقة يومية</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">⚡</div>
+            <div class="label">100% طبيعي</div>
           </div>
         </div>
-      </div>
+      </aside>
     </section>
   </main>
 
   <script>
     const unitPrice = 150;
-    const whatsappNumber = '212665191677';
-    const qtyButtons = [...document.querySelectorAll('#qtyButtons button')];
+    const qtyButtons = document.querySelectorAll('.qty-btn');
     const totalPrice = document.getElementById('totalPrice');
-    const unitPriceText = document.getElementById('unitPrice');
     const whatsappBtn = document.getElementById('whatsappBtn');
     const confirmBtn = document.getElementById('confirmBtn');
-    const revealEls = [...document.querySelectorAll('[data-reveal]')];
-    const slides = [...document.querySelectorAll('.visual-image')];
-    const slideDots = document.getElementById('slideDots');
-    const prevSlideBtn = document.getElementById('prevSlide');
-    const nextSlideBtn = document.getElementById('nextSlide');
 
-    let currentQty = 4;
-    let currentSlide = 0;
-    let slideInterval;
+    let selectedQty = 4;
 
-    function updateOrder(qty) {
-      currentQty = qty;
-      const total = qty * unitPrice;
-      unitPriceText.textContent = `DH ${unitPrice}`;
-      totalPrice.textContent = `DH ${total}`;
-      const message = `السلام عليكم، أريد طلب ${qty} من عسل السلطان. السعر الإجمالي هو ${total} DH.`;
-      whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    function updateOrderUI() {
+      totalPrice.textContent = `DH ${unitPrice * selectedQty}`;
+      const message = encodeURIComponent(`أريد طلب عسل السلطان - الكمية: ${selectedQty} - الإجمالي: DH ${unitPrice * selectedQty}`);
+      whatsappBtn.href = `https://wa.me/212600000000?text=${message}`;
     }
 
     qtyButtons.forEach((button) => {
       button.addEventListener('click', () => {
         qtyButtons.forEach((btn) => btn.classList.remove('active'));
         button.classList.add('active');
-        updateOrder(Number(button.dataset.qty));
+        selectedQty = Number(button.dataset.qty);
+        updateOrderUI();
       });
     });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    revealEls.forEach((el, index) => {
-      el.style.transitionDelay = `${index * 0.06}s`;
-      observer.observe(el);
-    });
-
-    function buildSlideDots() {
-      if (!slideDots || !slides.length) return;
-      slideDots.innerHTML = '';
-      slides.forEach((_, index) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.className = `slide-dot ${index === currentSlide ? 'active' : ''}`;
-        dot.setAttribute('aria-label', `Slide ${index + 1}`);
-        dot.addEventListener('click', () => {
-          goToSlide(index);
-          restartSlideShow();
-        });
-        slideDots.appendChild(dot);
-      });
-    }
-
-    function goToSlide(index) {
-      if (!slides.length) return;
-      currentSlide = (index + slides.length) % slides.length;
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === currentSlide);
-      });
-      [...slideDots.children].forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-      });
-    }
-
-    function nextSlide() {
-      goToSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-      goToSlide(currentSlide - 1);
-    }
-
-    function restartSlideShow() {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 3500);
-    }
-
-    if (prevSlideBtn) {
-      prevSlideBtn.addEventListener('click', () => {
-        prevSlide();
-        restartSlideShow();
-      });
-    }
-
-    if (nextSlideBtn) {
-      nextSlideBtn.addEventListener('click', () => {
-        nextSlide();
-        restartSlideShow();
-      });
-    }
-
-    buildSlideDots();
-    goToSlide(0);
-    restartSlideShow();
-
-    function subtleParallax() {
-      const shell = document.querySelector('.shell');
-      if (!shell) return;
-      shell.addEventListener('mousemove', (e) => {
-        if (window.innerWidth < 1024) return;
-        const rect = shell.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const visual = document.querySelector('.visual-image.active');
-        const logo = document.querySelector('.logo-box');
-        if (visual) visual.style.transform = `scale(1.01) translate(${x * -8}px, ${y * -8}px)`;
-        if (logo) logo.style.transform = `translate(${x * 6}px, ${y * 6}px)`;
-      });
-
-      shell.addEventListener('mouseleave', () => {
-        const visual = document.querySelector('.visual-image.active');
-        const logo = document.querySelector('.logo-box');
-        if (visual) visual.style.transform = 'scale(1.01) translate(0, 0)';
-        if (logo) logo.style.transform = 'translate(0, 0)';
-      });
-    }
-
-    subtleParallax();
 
     confirmBtn.addEventListener('click', () => {
-      const total = currentQty * unitPrice;
-      alert(`تم اختيار ${currentQty} قطعة. المجموع: ${total} DH`);
+      alert(`تم اختيار ${selectedQty} علبة. يمكنك ربط هذا الزر بفورم الطلب أو صفحة الدفع.`);
     });
 
-    updateOrder(4);
+    updateOrderUI();
   </script>
 </body>
 </html>
