@@ -13,7 +13,6 @@ color:white;
 padding-top:70px;
 }
 
-/* BACKGROUND */
 body::before{
 content:"";
 position:fixed;
@@ -23,22 +22,15 @@ width:100%;
 height:100%;
 background:url('background.jpg') no-repeat center center/cover;
 z-index:-1;
-transition:filter 0.5s ease, transform 0.5s ease;
-}
-
-body.scrolled::before{
-filter:blur(8px);
-transform:scale(1.05);
 }
 
 /* HEADER */
 header{
 display:flex;
-justify-content:space-between;
+justify-content:flex-end;
 align-items:center;
 padding:15px 25px;
 background:rgba(0,0,0,0.6);
-backdrop-filter: blur(8px);
 position:fixed;
 top:0;
 left:0;
@@ -46,8 +38,7 @@ width:100%;
 z-index:1000;
 }
 
-/* LANG */
-.lang-container{position:relative;}
+/* LANGUAGE */
 .lang-btn{
 font-size:26px;
 background:none;
@@ -56,50 +47,36 @@ cursor:pointer;
 color:white;
 }
 
-.lang-menu{
-display:none;
-position:absolute;
-top:40px;
-right:0;
-background:rgba(0,0,0,0.9);
-padding:10px;
-border-radius:10px;
-min-width:140px;
-}
-
-.lang-menu button{
-width:100%;
-background:none;
-border:none;
-color:white;
-padding:8px;
-cursor:pointer;
-text-align:left;
-}
-
-.lang-menu button:hover{
-background:gold;
-color:black;
-}
-
-/* HERO */
+/* HERO FIXED CENTER */
 .hero{
 text-align:center;
-padding:40px 20px;
+padding:30px 15px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px;
 }
 
+/* LOGO FIXED */
 .main-logo{
-width:160px;
-margin:20px auto;
+width:140px;
+height:auto;
+display:block;
+margin:10px auto;
 filter: drop-shadow(0 0 10px gold);
 }
 
-.hero img{
+/* PRODUCT IMAGE FIXED */
+.product-img{
 width:260px;
+max-width:90%;
 border-radius:15px;
 box-shadow:0 0 25px gold;
+display:block;
+margin:auto;
 }
 
+/* PRICE */
 .price{
 font-size:28px;
 color:gold;
@@ -110,21 +87,23 @@ text-decoration:line-through;
 color:#aaa;
 }
 
-/* CONTAINER */
+/* CONTAINER CENTER */
 .container{
 max-width:900px;
 margin:auto;
 padding:20px;
 }
 
+/* CARD */
 .card{
 background:rgba(0,0,0,0.7);
 padding:20px;
 border-radius:15px;
 margin:15px 0;
-transition:0.3s;
+text-align:center;
 }
 
+/* BUTTON */
 .btn{
 background:#25D366;
 color:white;
@@ -140,17 +119,18 @@ width:100%;
 .options{
 display:flex;
 gap:10px;
+justify-content:center;
 margin:15px 0;
+flex-wrap:wrap;
 }
 
 .option{
-flex:1;
-padding:12px;
+padding:10px 15px;
 background:#222;
 border-radius:10px;
 cursor:pointer;
+min-width:60px;
 text-align:center;
-transition:0.2s;
 }
 
 .option.active{
@@ -174,35 +154,10 @@ padding:20px;
 color:gold;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width:768px){
-.hero img{width:90%;}
-.options{flex-direction:column;}
-.option{width:100%;}
-.main-logo{width:120px;}
-.card{padding:15px;}
-}
-
-/* ===== PC ===== */
-@media (min-width:1024px){
-body{
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.container{
-max-width:1000px;
-}
-
-.card:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-.option:hover{
-transform:scale(1.05);
-}
+/* MOBILE FIX */
+@media(max-width:768px){
+.product-img{width:90%;}
+.main-logo{width:110px;}
 }
 </style>
 </head>
@@ -210,69 +165,46 @@ transform:scale(1.05);
 <body>
 
 <header>
-
-<div></div>
-
-<!-- LANGUAGE -->
-<div class="lang-container">
-<button class="lang-btn" onclick="toggleLang()">🌍</button>
-
-<div class="lang-menu" id="langMenu">
-<button onclick="setLang('ar')">🇸🇦 العربية</button>
-<button onclick="setLang('fr')">🇫🇷 Français</button>
-<button onclick="setLang('en')">🇬🇧 English</button>
-<button onclick="setLang('es')">🇪🇸 Español</button>
-<button onclick="setLang('de')">🇩🇪 Deutsch</button>
-</div>
-
-</div>
-
+<button class="lang-btn">🌍</button>
 </header>
 
 <!-- HERO -->
 <div class="hero">
 
 <img src="logo.png" class="main-logo">
-<img src="product1.jpg">
 
-<h1 id="title">عسل السلطان 💪</h1>
-<p id="desc">عسل طبيعي غني بالطاقة والحيوية.</p>
-<p id="use">ملعقة يومياً.</p>
+<img src="product1.jpg" class="product-img">
+
+<h1>عسل السلطان 💪</h1>
+<p>عسل طبيعي غني بالطاقة</p>
 
 <div class="old">200 DH</div>
 <div class="price" id="price">150 DH</div>
 
 </div>
 
-<!-- BODY -->
+<!-- CONTENT -->
 <div class="container">
 
 <div class="card">
-<h3 id="qtyTitle">📦 اختر الكمية</h3>
+<h3>📦 الكمية</h3>
 
 <div class="options">
-<div class="option active" onclick="selectQty(1,this)">1</div>
-<div class="option" onclick="selectQty(2,this)">2</div>
-<div class="option" onclick="selectQty(3,this)">3</div>
-<div class="option" onclick="selectQty(4,this)">4+</div>
+<div class="option active" onclick="setQty(1,this)">1</div>
+<div class="option" onclick="setQty(2,this)">2</div>
+<div class="option" onclick="setQty(3,this)">3</div>
+<div class="option" onclick="setQty(4,this)">4+</div>
 </div>
 
-<p id="calcPrice" style="color:gold;font-size:20px;">150 DH</p>
-</div>
-
-<div class="card">
-<h3 id="features">💎 المميزات</h3>
-<p id="f1">✔ طاقة</p>
-<p id="f2">✔ طبيعي</p>
-<p id="f3">✔ جودة</p>
+<p id="total" style="color:gold;font-size:22px;">150 DH</p>
 </div>
 
 <div class="card">
-<h3 id="order">📦 معلومات الطلب</h3>
+<h3>📦 الطلب</h3>
 <input placeholder="الاسم">
 <input placeholder="الهاتف">
 <input placeholder="المدينة">
-<button class="btn">تأكيد الطلب</button>
+<button class="btn" onclick="order()">تأكيد الطلب</button>
 </div>
 
 </div>
@@ -281,103 +213,38 @@ transform:scale(1.05);
 
 <script>
 
-/* LANG MENU */
-function toggleLang(){
-let m=document.getElementById("langMenu");
-m.style.display = m.style.display==="block"?"none":"block";
-}
+let qty = 1;
 
-/* TRANSLATIONS */
-const t={
-ar:{
-title:"عسل السلطان 💪",
-desc:"عسل طبيعي غني بالطاقة.",
-use:"ملعقة يومياً",
-qty:"📦 اختر الكمية",
-features:"💎 المميزات",
-f1:"✔ طاقة",
-f2:"✔ طبيعي",
-f3:"✔ جودة",
-order:"📦 معلومات الطلب"
-},
-fr:{
-title:"Miel Sultan 💪",
-desc:"Miel naturel énergisant.",
-use:"Une cuillère par jour",
-qty:"📦 Quantité",
-features:"💎 Avantages",
-f1:"✔ Énergie",
-f2:"✔ Naturel",
-f3:"✔ Qualité",
-order:"📦 Commande"
-},
-en:{
-title:"Sultan Honey 💪",
-desc:"Natural energy honey.",
-use:"One spoon daily",
-qty:"📦 Quantity",
-features:"💎 Features",
-f1:"✔ Energy",
-f2:"✔ Natural",
-f3:"✔ Quality",
-order:"📦 Order"
-},
-es:{
-title:"Miel Sultán 💪",
-desc:"Miel natural energético.",
-use:"Una cucharada diaria",
-qty:"📦 Cantidad",
-features:"💎 Características",
-f1:"✔ Energía",
-f2:"✔ Natural",
-f3:"✔ Calidad",
-order:"📦 Pedido"
-},
-de:{
-title:"Sultan Honig 💪",
-desc:"Natürliches Energie-Honig.",
-use:"Ein Löffel täglich",
-qty:"📦 Menge",
-features:"💎 Vorteile",
-f1:"✔ Energie",
-f2:"✔ Natürlich",
-f3:"✔ Qualität",
-order:"📦 Bestellung"
-}
-};
-
-function setLang(l){
-let x=t[l];
-document.getElementById("title").innerText=x.title;
-document.getElementById("desc").innerText=x.desc;
-document.getElementById("use").innerText=x.use;
-document.getElementById("qtyTitle").innerText=x.qty;
-document.getElementById("features").innerText=x.features;
-document.getElementById("f1").innerText=x.f1;
-document.getElementById("f2").innerText=x.f2;
-document.getElementById("f3").innerText=x.f3;
-document.getElementById("order").innerText=x.order;
-
-document.getElementById("langMenu").style.display="none";
-}
-
-/* PRICE SYSTEM */
-let qty=1;
-
-function selectQty(q,el){
-qty=q;
+function setQty(q,el){
+qty = q;
 
 document.querySelectorAll('.option').forEach(o=>o.classList.remove('active'));
 el.classList.add('active');
 
-let price=150;
+calc();
+}
 
-if(q==1) price=150;
-else if(q==2) price=280;
-else if(q==3) price=400;
-else if(q>=4) price=100*q;
+function calc(){
 
-document.getElementById("calcPrice").innerText=price+" DH";
+let price = 0;
+
+if(qty==1) price=150;
+else if(qty==2) price=280;
+else if(qty==3) price=400;
+else price=100*qty;
+
+if(qty>5) price = price*0.9;
+
+document.getElementById("total").innerText = price.toFixed(0)+" DH";
+}
+
+function order(){
+
+let price = document.getElementById("total").innerText;
+
+let msg = "🛒 Order:%0AQty: "+qty+"%0APrice: "+price;
+
+window.open("https://wa.me/212665191677?text="+msg);
 }
 
 </script>
