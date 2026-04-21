@@ -1,253 +1,494 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asel Sultan Premium</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عسل السلطان | عسل طبيعي فاخر</title>
+  <meta name="description" content="عسل السلطان - عسل طبيعي غني بالطاقة بطابع فاخر وتصميم عربي أنيق ومتجاوب." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #140d05;
+      --card: rgba(34, 22, 9, 0.72);
+      --card-strong: rgba(24, 16, 6, 0.88);
+      --text: #fff9ef;
+      --muted: #ead9bb;
+      --primary: #f3be55;
+      --primary-dark: #d29a2d;
+      --accent: #fff1c6;
+      --border: rgba(255, 224, 163, 0.18);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      --radius: 28px;
+    }
 
-<style>
-body{
-margin:0;
-font-family:Arial;
-color:white;
-padding-top:70px;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url('background.jpg') no-repeat center center/cover;
-z-index:-1;
-}
+    body {
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        linear-gradient(180deg, rgba(20,13,5,0.5), rgba(20,13,5,0.92)),
+        url('background.jpg') center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
 
-/* HEADER */
-header{
-display:flex;
-justify-content:flex-end;
-align-items:center;
-padding:15px 25px;
-background:rgba(0,0,0,0.6);
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:1000;
-}
+    .page {
+      width: min(1180px, 100%);
+    }
 
-/* LANGUAGE */
-.lang-btn{
-font-size:26px;
-background:none;
-border:none;
-cursor:pointer;
-color:white;
-}
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
 
-/* HERO FIXED CENTER */
-.hero{
-text-align:center;
-padding:30px 15px;
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:15px;
-}
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      min-height: 720px;
+    }
 
-/* LOGO FIXED */
-.main-logo{
-width:140px;
-height:auto;
-display:block;
-margin:10px auto;
-filter: drop-shadow(0 0 10px gold);
-}
+    .content {
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+    }
 
-/* PRODUCT IMAGE FIXED */
-.product-img{
-width:260px;
-max-width:90%;
-border-radius:15px;
-box-shadow:0 0 25px gold;
-display:block;
-margin:auto;
-}
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-/* PRICE */
-.price{
-font-size:28px;
-color:gold;
-}
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-.old{
-text-decoration:line-through;
-color:#aaa;
-}
+    .brand img {
+      width: 62px;
+      height: 62px;
+      object-fit: contain;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      padding: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
 
-/* CONTAINER CENTER */
-.container{
-max-width:900px;
-margin:auto;
-padding:20px;
-}
+    .brand-text small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
 
-/* CARD */
-.card{
-background:rgba(0,0,0,0.7);
-padding:20px;
-border-radius:15px;
-margin:15px 0;
-text-align:center;
-}
+    .brand-text strong {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
 
-/* BUTTON */
-.btn{
-background:#25D366;
-color:white;
-padding:15px;
-border:none;
-border-radius:10px;
-font-size:16px;
-cursor:pointer;
-width:100%;
-}
+    .badge {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(243, 190, 85, 0.14);
+      border: 1px solid rgba(243, 190, 85, 0.26);
+      color: #ffe29f;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
 
-/* OPTIONS */
-.options{
-display:flex;
-gap:10px;
-justify-content:center;
-margin:15px 0;
-flex-wrap:wrap;
-}
+    .headline h1 {
+      font-size: clamp(2.3rem, 4vw, 4.8rem);
+      line-height: 1.1;
+      margin-bottom: 14px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
 
-.option{
-padding:10px 15px;
-background:#222;
-border-radius:10px;
-cursor:pointer;
-min-width:60px;
-text-align:center;
-}
+    .headline p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.9;
+      max-width: 580px;
+    }
 
-.option.active{
-background:gold;
-color:black;
-}
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
-/* INPUT */
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-border:none;
-}
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
 
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-color:gold;
-}
+    .pricing-box {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      background: var(--card-strong);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+    }
 
-/* MOBILE FIX */
-@media(max-width:768px){
-.product-img{width:90%;}
-.main-logo{width:110px;}
-}
-</style>
+    .price-card {
+      background: rgba(255,255,255,0.04);
+      border-radius: 20px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .price-card span {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .old-price strong {
+      font-size: 1.8rem;
+      color: #f9d2a0;
+      text-decoration: line-through;
+      opacity: 0.75;
+    }
+
+    .new-price strong {
+      font-size: 2.4rem;
+      color: var(--primary);
+    }
+
+    .order-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .qty {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .qty button {
+      min-width: 72px;
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border-radius: 16px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .qty button:hover,
+    .qty button.active {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #291805;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(243,190,85,0.25);
+      border-color: transparent;
+    }
+
+    .summary {
+      display: grid;
+      gap: 10px;
+      min-width: 200px;
+    }
+
+    .summary .total {
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+
+    .summary .total span {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .summary .total strong {
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    .cta {
+      border: none;
+      border-radius: 18px;
+      padding: 16px 22px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #281604;
+      font: inherit;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 12px 30px rgba(243,190,85,0.28);
+    }
+
+    .cta:hover {
+      transform: translateY(-2px) scale(1.01);
+    }
+
+    .visual {
+      position: relative;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 213, 122, 0.22), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(255, 183, 0, 0.16), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      border-inline-start: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+    }
+
+    .visual-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glow {
+      position: absolute;
+      width: min(420px, 88%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(243,190,85,0.35), rgba(243,190,85,0.05) 55%, transparent 72%);
+      filter: blur(10px);
+    }
+
+    .product {
+      position: relative;
+      z-index: 1;
+      width: min(470px, 88%);
+      object-fit: contain;
+      filter: drop-shadow(0 30px 50px rgba(0,0,0,0.35));
+      animation: floaty 4.2s ease-in-out infinite;
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 2;
+      background: rgba(20, 14, 7, 0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .floating-card strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .floating-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .card-1 { top: 10%; right: 8%; }
+    .card-2 { bottom: 12%; left: 8%; }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+      color: rgba(255, 245, 226, 0.78);
+      font-size: 0.95rem;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 420px;
+        border-inline-start: none;
+        border-top: 1px solid var(--border);
+        order: -1;
+      }
+
+      .content {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 14px;
+        background-attachment: scroll;
+      }
+
+      .pricing-box,
+      .order-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .qty button {
+        flex: 1 1 calc(50% - 6px);
+      }
+
+      .summary {
+        min-width: 100%;
+      }
+
+      .card-1,
+      .card-2 {
+        position: static;
+      }
+
+      .visual-inner {
+        flex-direction: column;
+        gap: 14px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <main class="page">
+    <section class="card hero">
+      <div class="content">
+        <div class="topbar">
+          <div class="brand">
+            <img src="logo.png" alt="شعار عسل السلطان" />
+            <div class="brand-text">
+              <small>منتج طبيعي فاخر</small>
+              <strong>Asel Sultan Premium</strong>
+            </div>
+          </div>
+          <div class="badge">عرض خاص لفترة محدودة</div>
+        </div>
 
-<header>
-<button class="lang-btn">🌍</button>
-</header>
+        <div class="headline">
+          <h1>عسل السلطان</h1>
+          <p>
+            عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنح الزائر تجربة شراء أوضح، أسرع، وأكثر احترافية على جميع الأجهزة.
+          </p>
+        </div>
 
-<!-- HERO -->
-<div class="hero">
+        <div class="features">
+          <div class="chip">100% طبيعي</div>
+          <div class="chip">طاقة يومية</div>
+          <div class="chip">مذاق غني</div>
+          <div class="chip">تصميم متجاوب</div>
+        </div>
 
-<img src="logo.png" class="main-logo">
+        <div class="pricing-box">
+          <div class="price-card old-price">
+            <span>السعر قبل التخفيض</span>
+            <strong>200 DH</strong>
+          </div>
+          <div class="price-card new-price">
+            <span>السعر الحالي</span>
+            <strong id="unitPrice">150 DH</strong>
+          </div>
+        </div>
 
-<img src="product1.jpg" class="product-img">
+        <div>
+          <div class="section-title">الكمية</div>
+          <div class="order-panel">
+            <div class="qty" id="qtyButtons">
+              <button class="active" data-qty="1">1</button>
+              <button data-qty="2">2</button>
+              <button data-qty="3">3</button>
+              <button data-qty="4">4+</button>
+            </div>
 
-<h1>عسل السلطان 💪</h1>
-<p>عسل طبيعي غني بالطاقة</p>
+            <div class="summary">
+              <div class="total">
+                <span>الإجمالي</span>
+                <strong id="totalPrice">150 DH</strong>
+              </div>
+              <button class="cta">تأكيد الطلب</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<div class="old">200 DH</div>
-<div class="price" id="price">150 DH</div>
+      <div class="visual">
+        <div class="visual-inner">
+          <div class="glow"></div>
+          <img class="product" src="product1.jpg" alt="علبة عسل السلطان" />
 
-</div>
+          <div class="floating-card card-1">
+            <strong>عسل طبيعي</strong>
+            <span>مظهر فاخر وثقة أكبر للعميل</span>
+          </div>
 
-<!-- CONTENT -->
-<div class="container">
+          <div class="floating-card card-2">
+            <strong>تصميم عصري</strong>
+            <span>وضوح أفضل للأسعار والطلب</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h3>📦 الكمية</h3>
+    <p class="footer">© Asel Sultan Premium</p>
+  </main>
 
-<div class="options">
-<div class="option active" onclick="setQty(1,this)">1</div>
-<div class="option" onclick="setQty(2,this)">2</div>
-<div class="option" onclick="setQty(3,this)">3</div>
-<div class="option" onclick="setQty(4,this)">4+</div>
-</div>
+  <script>
+    const unitPrice = 150;
+    const qtyButtons = document.querySelectorAll('#qtyButtons button');
+    const totalPrice = document.getElementById('totalPrice');
 
-<p id="total" style="color:gold;font-size:22px;">150 DH</p>
-</div>
-
-<div class="card">
-<h3>📦 الطلب</h3>
-<input placeholder="الاسم">
-<input placeholder="الهاتف">
-<input placeholder="المدينة">
-<button class="btn" onclick="order()">تأكيد الطلب</button>
-</div>
-
-</div>
-
-<footer>© Asel Sultan Premium</footer>
-
-<script>
-
-let qty = 1;
-
-function setQty(q,el){
-qty = q;
-
-document.querySelectorAll('.option').forEach(o=>o.classList.remove('active'));
-el.classList.add('active');
-
-calc();
-}
-
-function calc(){
-
-let price = 0;
-
-if(qty==1) price=150;
-else if(qty==2) price=280;
-else if(qty==3) price=400;
-else price=100*qty;
-
-if(qty>5) price = price*0.9;
-
-document.getElementById("total").innerText = price.toFixed(0)+" DH";
-}
-
-function order(){
-
-let price = document.getElementById("total").innerText;
-
-let msg = "🛒 Order:%0AQty: "+qty+"%0APrice: "+price;
-
-window.open("https://wa.me/212665191677?text="+msg);
-}
-
-</script>
-
+    qtyButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        qtyButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const qty = index === 3 ? 4 : Number(button.dataset.qty);
+        totalPrice.textContent = `${qty * unitPrice} DH`;
+      });
+    });
+  </script>
 </body>
 </html>
