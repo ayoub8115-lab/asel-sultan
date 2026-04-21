@@ -46,8 +46,28 @@ z-index:1000;
 color:gold;
 }
 
+/* LANG FLAGS */
+.lang button{
+background: transparent;
+border: none;
+font-size: 24px;
+cursor: pointer;
+margin-left: 8px;
+transition: transform 0.2s, opacity 0.2s;
+opacity: 0.6;
+}
+
+.lang button:hover{
+transform: scale(1.2);
+opacity: 1;
+}
+
+.lang button.active{
+opacity: 1;
+transform: scale(1.2);
+}
+
 .logo{font-weight:bold;font-size:20px}
-.lang button{margin-left:5px}
 
 .hero{
 text-align:center;
@@ -117,9 +137,9 @@ to{opacity:1;transform:translateY(0)}
 
 <header>
 <div class="lang">
-<button onclick="setLang('ar')">AR</button>
-<button onclick="setLang('fr')">FR</button>
-<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('ar', event)">🇸🇦</button>
+<button onclick="setLang('fr', event)">🇫🇷</button>
+<button onclick="setLang('en', event)">🇬🇧</button>
 </div>
 </header>
 
@@ -134,7 +154,7 @@ to{opacity:1;transform:translateY(0)}
 <img src="product2.jpg" onclick="changeImage(this)">
 </div>
 
-<h1 id="title">عسل السلطان  💪</h1>
+<h1 id="title">عسل السلطان 💪</h1>
 <p id="desc">عسل طبيعي غني بالطاقة والحيوية ودعم النشاط اليومي.</p>
 <p id="use">طريقة الاستعمال: ملعقة صغيرة يومياً أو حسب الحاجة مع نظام غذائي متوازن.</p>
 
@@ -197,10 +217,20 @@ let phone=document.getElementById('phone').value;
 let city=document.getElementById('city').value;
 
 let text=`طلب جديد:%0Aالاسم: ${name}%0Aالهاتف: ${phone}%0Aالمدينة: ${city}%0Aالكمية: ${selectedQty}%0Aالثمن: ${selectedPrice}DH`;
+
 window.open('https://wa.me/212665191677?text='+text);
 }
 
-function setLang(lang){}
+function setLang(lang, event){
+document.querySelectorAll('.lang button').forEach(btn=>{
+btn.classList.remove('active');
+});
+
+event.target.classList.add('active');
+
+// هنا تقدر تزيد الترجمة لاحقاً
+console.log("Language:", lang);
+}
 
 window.addEventListener("scroll", function(){
 if(window.scrollY > 100){
