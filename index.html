@@ -159,31 +159,72 @@
       justify-content: center;
       width: 100%;
       min-height: 560px;
+      padding-bottom: 34px;
     }
 
-    .product-visual img {
-      display: block;
+    .product-visual .slide {
+      position: absolute;
+      inset: 0;
+      margin: auto;
       max-width: 88%;
       max-height: 760px;
       object-fit: contain;
       filter: drop-shadow(0 35px 55px rgba(0,0,0,0.58));
       user-select: none;
       -webkit-user-drag: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      pointer-events: none;
     }
 
-    .bee {
+    .product-visual .slide.active {
+      opacity: 1;
+    }
+
+    .slider-dots {
       position: absolute;
-      width: 64px;
-      opacity: 0.9;
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.35));
-      animation: floatBee 4.8s ease-in-out infinite;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(18, 11, 4, 0.72);
+      border: 1px solid rgba(240, 191, 82, 0.14);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24), inset 0 0 0 1px rgba(255,255,255,0.02);
+      backdrop-filter: blur(10px);
+      z-index: 3;
     }
 
-    .bee-1 { left: 1%; bottom: 16%; }
-    .bee-2 { right: 12%; top: 28%; animation-delay: 1.4s; }
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      background: rgba(255, 236, 202, 0.28);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      opacity: 0.9;
+    }
 
-    @keyframes floatBee {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
+    .slider-dot:hover,
+    .slider-dot:focus-visible {
+      outline: none;
+      transform: scale(1.12);
+      background: rgba(240, 191, 82, 0.72);
+    }
+
+    .slider-dot.active {
+      background: radial-gradient(circle at 30% 30%, #fff2cc, #f0bf52 60%, #c88a1d 100%);
+      box-shadow: 0 0 0 4px rgba(240, 191, 82, 0.12), 0 0 14px rgba(240, 191, 82, 0.4);
+      transform: scale(1.18);
+      opacity: 1;
+    }
       50% { transform: translateY(-12px) rotate(-4deg); }
     }
 
@@ -867,9 +908,15 @@
         </div>
 
         <div class="product-visual">
-          <img src="product1.jpg" alt="منتج عسل السلطان" />
-          <img src="product2.jpg" alt="" class="bee bee-1" aria-hidden="true" />
-          <img src="product3.jpg" alt="" class="bee bee-2" aria-hidden="true" />
+          <img src="product1.jpg" alt="منتج عسل السلطان 1" class="slide active" />
+          <img src="product2.jpg" alt="منتج عسل السلطان 2" class="slide" />
+          <img src="product3.jpg" alt="منتج عسل السلطان 3" class="slide" />
+
+          <div class="slider-dots" aria-label="مؤشرات الصور">
+            <button class="slider-dot active" type="button" data-slide="0" aria-label="الصورة الأولى"></button>
+            <button class="slider-dot" type="button" data-slide="1" aria-label="الصورة الثانية"></button>
+            <button class="slider-dot" type="button" data-slide="2" aria-label="الصورة الثالثة"></button>
+          </div>
         </div>
 
         <div class="left-features">
@@ -900,13 +947,43 @@
     const totalPrice = document.getElementById('totalPrice');
     const whatsappBtn = document.getElementById('whatsappBtn');
     const confirmBtn = document.getElementById('confirmBtn');
+    const slides = document.querySelectorAll('.product-visual .slide');
+    const dots = document.querySelectorAll('.slider-dot');
 
     let selectedQty = 4;
+    let currentSlide = 0;
 
     function updateOrderUI() {
       totalPrice.textContent = `DH ${unitPrice * selectedQty}`;
       const message = encodeURIComponent(`أريد طلب عسل السلطان - الكمية: ${selectedQty} - الإجمالي: DH ${unitPrice * selectedQty}`);
       whatsappBtn.href = `https://wa.me/212600000000?text=${message}`;
+    }
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    });
+    }
+
+    function startSlideshow() {
+      if (!slides.length) return;
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }, 3000);
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        currentSlide = Number(dot.dataset.slide);
+        showSlide(currentSlide);
+      });
+    });, 3000);
     }
 
     qtyButtons.forEach((button) => {
@@ -915,6 +992,16 @@
         button.classList.add('active');
         selectedQty = Number(button.dataset.qty);
         updateOrderUI();
+      });
+    });
+
+    confirmBtn.addEventListener('click', () => {
+      alert(`تم اختيار ${selectedQty} علبة. يمكنك ربط هذا الزر بفورم الطلب أو صفحة الدفع.`);
+    });
+
+    updateOrderUI();
+    showSlide(currentSlide);
+    startSlideshow();
       });
     });
 
