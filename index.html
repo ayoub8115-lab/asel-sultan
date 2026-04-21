@@ -21,12 +21,18 @@
       --border: rgba(255, 224, 163, 0.18);
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
       --radius: 28px;
+      --whatsapp: #25D366;
+      --whatsapp-dark: #128C7E;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -69,6 +75,24 @@
       gap: 28px;
     }
 
+    .topbar,
+    .headline,
+    .features,
+    .pricing-box,
+    .order-panel,
+    .footer {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: revealUp 0.8s ease forwards;
+    }
+
+    .topbar { animation-delay: 0.08s; }
+    .headline { animation-delay: 0.18s; }
+    .features { animation-delay: 0.28s; }
+    .pricing-box { animation-delay: 0.38s; }
+    .order-panel { animation-delay: 0.48s; }
+    .footer { animation-delay: 0.62s; }
+
     .topbar {
       display: flex;
       align-items: center;
@@ -91,6 +115,11 @@
       background: rgba(255,255,255,0.08);
       padding: 8px;
       border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.35s ease;
+    }
+
+    .brand:hover img {
+      transform: rotate(-4deg) scale(1.04);
     }
 
     .brand-text small {
@@ -113,6 +142,7 @@
       color: #ffe29f;
       font-size: 0.95rem;
       font-weight: 700;
+      animation: pulseGlow 2.8s ease-in-out infinite;
     }
 
     .headline h1 {
@@ -144,6 +174,12 @@
       color: var(--accent);
       font-weight: 600;
       font-size: 0.95rem;
+      transition: 0.3s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.1);
     }
 
     .pricing-box {
@@ -161,6 +197,12 @@
       border-radius: 20px;
       padding: 18px;
       border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(243,190,85,0.28);
     }
 
     .price-card span {
@@ -227,7 +269,7 @@
     .summary {
       display: grid;
       gap: 10px;
-      min-width: 200px;
+      min-width: 240px;
     }
 
     .summary .total {
@@ -236,6 +278,11 @@
       padding: 16px 18px;
       border: 1px solid rgba(255,255,255,0.06);
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .summary .total:hover {
+      transform: translateY(-3px);
     }
 
     .summary .total span {
@@ -250,22 +297,43 @@
       font-size: 1.8rem;
     }
 
-    .cta {
+    .cta-group {
+      display: grid;
+      gap: 10px;
+    }
+
+    .cta,
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
       border: none;
       border-radius: 18px;
       padding: 16px 22px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #281604;
       font: inherit;
       font-weight: 800;
       font-size: 1rem;
       cursor: pointer;
       transition: 0.25s ease;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #281604;
       box-shadow: 0 12px 30px rgba(243,190,85,0.28);
     }
 
-    .cta:hover {
+    .cta:hover,
+    .whatsapp-btn:hover {
       transform: translateY(-2px) scale(1.01);
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-dark));
+      color: white;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.24);
     }
 
     .visual {
@@ -279,6 +347,16 @@
       align-items: center;
       justify-content: center;
       padding: 36px;
+      overflow: hidden;
+    }
+
+    .visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 45%, transparent 65%);
+      transform: translateX(-100%);
+      animation: shine 5.5s ease-in-out infinite;
     }
 
     .visual-inner {
@@ -297,6 +375,7 @@
       border-radius: 50%;
       background: radial-gradient(circle, rgba(243,190,85,0.35), rgba(243,190,85,0.05) 55%, transparent 72%);
       filter: blur(10px);
+      animation: pulseSoft 3.8s ease-in-out infinite;
     }
 
     .product {
@@ -317,6 +396,8 @@
       padding: 14px 16px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(8px);
+      animation: revealUp 0.9s ease forwards;
+      opacity: 0;
     }
 
     .floating-card strong {
@@ -331,8 +412,8 @@
       font-size: 0.9rem;
     }
 
-    .card-1 { top: 10%; right: 8%; }
-    .card-2 { bottom: 12%; left: 8%; }
+    .card-1 { top: 10%; right: 8%; animation-delay: 0.55s; }
+    .card-2 { bottom: 12%; left: 8%; animation-delay: 0.72s; }
 
     .footer {
       margin-top: 18px;
@@ -344,6 +425,32 @@
     @keyframes floaty {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(243,190,85,0.12); }
+      50% { box-shadow: 0 0 0 10px rgba(243,190,85,0.02); }
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(0.98); opacity: 0.8; }
+      50% { transform: scale(1.04); opacity: 1; }
+    }
+
+    @keyframes revealUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-120%); }
+      55%, 100% { transform: translateX(120%); }
     }
 
     @media (max-width: 980px) {
@@ -449,7 +556,12 @@
                 <span>الإجمالي</span>
                 <strong id="totalPrice">150 DH</strong>
               </div>
-              <button class="cta">تأكيد الطلب</button>
+              <div class="cta-group">
+                <button class="cta">تأكيد الطلب</button>
+                <a class="whatsapp-btn" id="whatsappBtn" href="https://wa.me/212600000000?text=السلام%20عليكم%D8%8C%20أريد%20طلب%201%20من%20عسل%20السلطان%20بسعر%20150%20DH" target="_blank" rel="noopener noreferrer">
+                  <span>اطلب عبر واتساب</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -480,15 +592,25 @@
     const unitPrice = 150;
     const qtyButtons = document.querySelectorAll('#qtyButtons button');
     const totalPrice = document.getElementById('totalPrice');
+    const whatsappBtn = document.getElementById('whatsappBtn');
+
+    function updateOrder(qty) {
+      const total = qty * unitPrice;
+      totalPrice.textContent = `${total} DH`;
+      const message = `السلام عليكم، أريد طلب ${qty} من عسل السلطان. السعر الإجمالي هو ${total} DH.`;
+      whatsappBtn.href = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
+    }
 
     qtyButtons.forEach((button, index) => {
       button.addEventListener('click', () => {
         qtyButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         const qty = index === 3 ? 4 : Number(button.dataset.qty);
-        totalPrice.textContent = `${qty * unitPrice} DH`;
+        updateOrder(qty);
       });
     });
+
+    updateOrder(1);
   </script>
 </body>
 </html>
