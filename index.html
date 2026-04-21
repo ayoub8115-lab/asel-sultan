@@ -13,7 +13,7 @@ color:white;
 padding-top:70px;
 }
 
-/* Background with blur effect */
+/* BACKGROUND */
 body::before{
 content:"";
 position:fixed;
@@ -31,6 +31,7 @@ filter:blur(8px);
 transform:scale(1.05);
 }
 
+/* HEADER */
 header{
 display:flex;
 justify-content:space-between;
@@ -43,32 +44,50 @@ top:0;
 left:0;
 width:100%;
 z-index:1000;
-color:gold;
 }
 
-/* LANG FLAGS */
-.lang button{
-background: transparent;
-border: none;
-font-size: 24px;
-cursor: pointer;
-margin-left: 8px;
-transition: transform 0.2s, opacity 0.2s;
-opacity: 0.6;
+/* LANGUAGE DROPDOWN */
+.lang-container{
+position:relative;
 }
 
-.lang button:hover{
-transform: scale(1.2);
-opacity: 1;
+.lang-btn{
+font-size:26px;
+cursor:pointer;
+background:none;
+border:none;
+color:white;
 }
 
-.lang button.active{
-opacity: 1;
-transform: scale(1.2);
+.lang-menu{
+display:none;
+position:absolute;
+top:40px;
+right:0;
+background:rgba(0,0,0,0.85);
+padding:10px;
+border-radius:10px;
+min-width:140px;
 }
 
-.logo{font-weight:bold;font-size:20px}
+.lang-menu button{
+display:block;
+width:100%;
+background:none;
+border:none;
+color:white;
+padding:8px;
+cursor:pointer;
+text-align:left;
+font-size:16px;
+}
 
+.lang-menu button:hover{
+background:gold;
+color:black;
+}
+
+/* HERO */
 .hero{
 text-align:center;
 padding:40px 20px
@@ -79,34 +98,12 @@ width:160px;
 display:block;
 margin:30px auto;
 filter: drop-shadow(0 0 10px gold);
-animation:fadeIn 1.5s ease-in-out;
 }
 
 .hero img{
 width:260px;
 border-radius:15px;
 box-shadow:0 0 25px gold;
-transition:0.4s
-}
-
-.hero img:hover{
-transform:scale(1.05)
-}
-
-.gallery{margin-top:15px;}
-
-.gallery img{
-width:90px;
-margin:5px;
-border-radius:10px;
-cursor:pointer;
-opacity:0.7;
-transition:0.3s;
-}
-
-.gallery img:hover{
-opacity:1;
-transform:scale(1.1)
 }
 
 .price{font-size:28px;color:gold}
@@ -125,22 +122,29 @@ transform:scale(1.1)
 input{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none}
 
 footer{text-align:center;padding:20px;color:gold}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(-20px)}
-to{opacity:1;transform:translateY(0)}
-}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="lang">
-<button onclick="setLang('ar', event)">🇸🇦</button>
-<button onclick="setLang('fr', event)">🇫🇷</button>
-<button onclick="setLang('en', event)">🇬🇧</button>
+
+<div></div>
+
+<!-- 🌍 LANGUAGE BUTTON -->
+<div class="lang-container">
+<button class="lang-btn" onclick="toggleLangMenu()">🌍</button>
+
+<div class="lang-menu" id="langMenu">
+<button onclick="setLang('ar')">🇸🇦 العربية</button>
+<button onclick="setLang('fr')">🇫🇷 Français</button>
+<button onclick="setLang('en')">🇬🇧 English</button>
+<button onclick="setLang('es')">🇪🇸 Español</button>
+<button onclick="setLang('de')">🇩🇪 Deutsch</button>
 </div>
+
+</div>
+
 </header>
 
 <div class="hero">
@@ -149,46 +153,34 @@ to{opacity:1;transform:translateY(0)}
 
 <img id="mainProduct" src="product1.jpg">
 
-<div class="gallery">
-<img src="product1.jpg" onclick="changeImage(this)">
-<img src="product2.jpg" onclick="changeImage(this)">
-</div>
-
 <h1 id="title">عسل السلطان 💪</h1>
-<p id="desc">عسل طبيعي غني بالطاقة والحيوية ودعم النشاط اليومي.</p>
-<p id="use">طريقة الاستعمال: ملعقة صغيرة يومياً أو حسب الحاجة مع نظام غذائي متوازن.</p>
+<p id="desc">عسل طبيعي غني بالطاقة والحيوية.</p>
+<p id="use">طريقة الاستعمال: ملعقة صغيرة يومياً.</p>
 
-<div class="old" id="oldPrice">200 DH</div>
+<div class="old">200 DH</div>
 <div class="price" id="price">150 DH</div>
 
-<p id="delivery1">🚚 داخل الدار البيضاء: مجاني</p>
-<p id="delivery2">🚚 + 30 DH :خارج الدار البيضاء</p>
 </div>
 
 <div class="container">
 
 <div class="card">
-<h3>📦 اختر العرض</h3>
-<div class="options">
-<div class="option active" onclick="selectOffer(1,150,this)">1 = 150DH</div>
-<div class="option" onclick="selectOffer(2,260,this)">2 = 260DH</div>
-<div class="option" onclick="selectOffer(3,350,this)">3 = 350DH</div>
-</div>
+<h3 id="offerTitle">📦 اختر العرض</h3>
 </div>
 
 <div class="card">
-<h3>💎 المميزات</h3>
-<p>✔ طاقة ونشاط</p>
-<p>✔ عسل طبيعي</p>
-<p>✔ جودة عالية</p>
+<h3 id="features">💎 المميزات</h3>
+<p id="f1">✔ طاقة ونشاط</p>
+<p id="f2">✔ عسل طبيعي</p>
+<p id="f3">✔ جودة عالية</p>
 </div>
 
 <div class="card">
-<h3>📦 معلومات الطلب</h3>
-<input type="text" id="name" placeholder="الاسم الكامل">
-<input type="text" id="phone" placeholder="رقم الهاتف">
-<input type="text" id="city" placeholder="المدينة">
-<button class="btn" onclick="sendOrder()">تأكيد الطلب</button>
+<h3 id="order">📦 معلومات الطلب</h3>
+<input id="name" placeholder="الاسم الكامل">
+<input id="phone" placeholder="رقم الهاتف">
+<input id="city" placeholder="المدينة">
+<button class="btn">تأكيد الطلب</button>
 </div>
 
 </div>
@@ -196,47 +188,94 @@ to{opacity:1;transform:translateY(0)}
 <footer>© Asel Sultan Premium</footer>
 
 <script>
-let selectedQty=1;
-let selectedPrice=150;
 
-function selectOffer(qty,price,el){
-selectedQty=qty;
-selectedPrice=price;
-document.getElementById('price').innerText=price+' DH';
-document.querySelectorAll('.option').forEach(o=>o.classList.remove('active'));
-el.classList.add('active');
+/* MENU */
+function toggleLangMenu(){
+let menu=document.getElementById("langMenu");
+menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-function changeImage(el){
-document.getElementById('mainProduct').src = el.src;
+/* TRANSLATIONS */
+const translations = {
+ar:{
+title:"عسل السلطان 💪",
+desc:"عسل طبيعي غني بالطاقة والحيوية.",
+use:"طريقة الاستعمال: ملعقة صغيرة يومياً.",
+offer:"📦 اختر العرض",
+features:"💎 المميزات",
+f1:"✔ طاقة ونشاط",
+f2:"✔ عسل طبيعي",
+f3:"✔ جودة عالية",
+order:"📦 معلومات الطلب"
+},
+fr:{
+title:"Miel Sultan 💪",
+desc:"Miel naturel riche en énergie et vitalité.",
+use:"Utilisation: une cuillère par jour.",
+offer:"📦 Choisir l'offre",
+features:"💎 Avantages",
+f1:"✔ Énergie",
+f2:"✔ Miel naturel",
+f3:"✔ Haute qualité",
+order:"📦 Informations commande"
+},
+en:{
+title:"Sultan Honey 💪",
+desc:"Natural honey full of energy and vitality.",
+use:"Usage: one spoon daily.",
+offer:"📦 Choose offer",
+features:"💎 Features",
+f1:"✔ Energy",
+f2:"✔ Natural honey",
+f3:"✔ High quality",
+order:"📦 Order info"
+},
+es:{
+title:"Miel Sultán 💪",
+desc:"Miel natural rico en energía y vitalidad.",
+use:"Uso: una cucharada diaria.",
+offer:"📦 Elegir oferta",
+features:"💎 Características",
+f1:"✔ Energía",
+f2:"✔ Miel natural",
+f3:"✔ Alta calidad",
+order:"📦 Información pedido"
+},
+de:{
+title:"Sultan Honig 💪",
+desc:"Natürlicher Honig voller Energie.",
+use:"Verwendung: ein Löffel täglich.",
+offer:"📦 Angebot wählen",
+features:"💎 Vorteile",
+f1:"✔ Energie",
+f2:"✔ Natürlicher Honig",
+f3:"✔ Hohe Qualität",
+order:"📦 Bestellinfo"
+}
+};
+
+/* CHANGE LANGUAGE */
+function setLang(lang){
+let t = translations[lang];
+
+document.getElementById("title").innerText=t.title;
+document.getElementById("desc").innerText=t.desc;
+document.getElementById("use").innerText=t.use;
+
+document.getElementById("offerTitle").innerText=t.offer;
+document.getElementById("features").innerText=t.features;
+document.getElementById("f1").innerText=t.f1;
+document.getElementById("f2").innerText=t.f2;
+document.getElementById("f3").innerText=t.f3;
+document.getElementById("order").innerText=t.order;
+
+document.getElementById("langMenu").style.display="none";
 }
 
-function sendOrder(){
-let name=document.getElementById('name').value;
-let phone=document.getElementById('phone').value;
-let city=document.getElementById('city').value;
-
-let text=`طلب جديد:%0Aالاسم: ${name}%0Aالهاتف: ${phone}%0Aالمدينة: ${city}%0Aالكمية: ${selectedQty}%0Aالثمن: ${selectedPrice}DH`;
-
-window.open('https://wa.me/212665191677?text='+text);
-}
-
-function setLang(lang, event){
-document.querySelectorAll('.lang button').forEach(btn=>{
-btn.classList.remove('active');
-});
-
-event.target.classList.add('active');
-
-// هنا تقدر تزيد الترجمة لاحقاً
-console.log("Language:", lang);
-}
-
-window.addEventListener("scroll", function(){
-if(window.scrollY > 100){
-document.body.classList.add("scrolled");
-}else{
-document.body.classList.remove("scrolled");
+/* CLOSE MENU OUTSIDE CLICK */
+document.addEventListener("click", function(e){
+if(!e.target.closest(".lang-container")){
+document.getElementById("langMenu").style.display="none";
 }
 });
 </script>
