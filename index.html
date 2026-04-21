@@ -7,22 +7,25 @@
   <meta name="description" content="عسل السلطان - عسل طبيعي غني بالطاقة بطابع فاخر وتصميم عربي أنيق ومتجاوب." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #140d05;
-      --card: rgba(34, 22, 9, 0.72);
-      --card-strong: rgba(24, 16, 6, 0.88);
-      --text: #fff9ef;
-      --muted: #ead9bb;
-      --primary: #f3be55;
-      --primary-dark: #d29a2d;
-      --accent: #fff1c6;
-      --border: rgba(255, 224, 163, 0.18);
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
-      --radius: 28px;
-      --whatsapp: #25D366;
-      --whatsapp-dark: #128C7E;
+      --bg: #060402;
+      --panel: rgba(16, 10, 4, 0.9);
+      --panel-soft: rgba(21, 13, 6, 0.78);
+      --panel-deep: rgba(11, 7, 3, 0.95);
+      --text: #f7f0e3;
+      --muted: #d9c6a6;
+      --line: rgba(233, 177, 68, 0.22);
+      --line-strong: rgba(233, 177, 68, 0.42);
+      --gold: #efb94c;
+      --gold-2: #d89b28;
+      --green: #0faa43;
+      --green-2: #0b8f38;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
     }
 
     * {
@@ -36,567 +39,788 @@
     }
 
     body {
-      font-family: 'Cairo', sans-serif;
       min-height: 100vh;
+      font-family: 'Cairo', sans-serif;
       color: var(--text);
       background:
-        linear-gradient(180deg, rgba(20,13,5,0.5), rgba(20,13,5,0.92)),
+        radial-gradient(circle at 15% 20%, rgba(235, 162, 42, 0.11), transparent 25%),
+        radial-gradient(circle at 86% 28%, rgba(235, 162, 42, 0.08), transparent 22%),
+        linear-gradient(180deg, rgba(0,0,0,0.82), rgba(0,0,0,0.96)),
         url('background.jpg') center/cover no-repeat fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
+      padding: 30px;
     }
 
     .page {
-      width: min(1180px, 100%);
+      max-width: 1460px;
+      margin: 0 auto;
     }
 
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(14px);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
+    .shell {
+      position: relative;
       overflow: hidden;
+      border-radius: 38px;
+      border: 1px solid var(--line-strong);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+        rgba(8, 5, 2, 0.82);
+      box-shadow: var(--shadow);
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 14%, rgba(255, 194, 72, 0.08), transparent 22%),
+        radial-gradient(circle at 82% 12%, rgba(255, 194, 72, 0.06), transparent 18%),
+        radial-gradient(circle at 78% 80%, rgba(255, 194, 72, 0.05), transparent 24%);
+      pointer-events: none;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      min-height: 720px;
+      grid-template-columns: 0.95fr 1.25fr;
+      min-height: 920px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual,
+    .content {
+      padding: 34px;
+    }
+
+    .visual {
+      border-inline-end: 1px solid var(--line);
+      position: relative;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .visual-card {
+      width: 100%;
+      min-height: 100%;
+      border-radius: 30px;
+      border: 1px solid rgba(233, 177, 68, 0.18);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .visual-card img.main-product {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .visual-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.24));
+      pointer-events: none;
+    }
+
+    .floating-note,
+    .benefits-bar {
+      position: absolute;
+      z-index: 2;
+      backdrop-filter: blur(8px);
+      background: rgba(18, 11, 5, 0.75);
+      border: 1px solid rgba(233, 177, 68, 0.18);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.32);
+    }
+
+    .floating-note {
+      top: 48px;
+      left: 48px;
+      padding: 18px 22px;
+      border-radius: 24px;
+      min-width: 295px;
+    }
+
+    .floating-note strong,
+    .mini-card strong {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: #ffe19c;
+    }
+
+    .floating-note span,
+    .mini-card span,
+    .benefit-item small,
+    .subline,
+    .desc {
+      color: var(--muted);
+    }
+
+    .mini-card {
+      position: absolute;
+      left: 36px;
+      bottom: 168px;
+      z-index: 2;
+      padding: 18px 22px;
+      border-radius: 24px;
+      background: rgba(12, 7, 3, 0.78);
+      border: 1px solid rgba(233, 177, 68, 0.16);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .benefits-bar {
+      right: 26px;
+      left: 26px;
+      bottom: 26px;
+      border-radius: 24px;
+      padding: 16px 12px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      align-items: center;
+    }
+
+    .benefit-item {
+      text-align: center;
+      padding: 10px 8px;
+      border-inline-start: 1px solid rgba(233, 177, 68, 0.16);
+    }
+
+    .benefit-item:first-child {
+      border-inline-start: none;
+    }
+
+    .benefit-item .icon,
+    .feature-chip .icon,
+    .trust-item .icon,
+    .cta .icon,
+    .whatsapp-btn .icon {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .benefit-item strong,
+    .trust-item strong {
+      display: block;
+      font-size: 0.98rem;
+      margin-top: 8px;
+    }
+
+    .benefit-item small,
+    .trust-item small {
+      font-size: 0.9rem;
     }
 
     .content {
-      padding: 44px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       gap: 28px;
+      position: relative;
     }
 
-    .topbar,
-    .headline,
-    .features,
-    .pricing-box,
-    .order-panel,
-    .footer {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: revealUp 0.8s ease forwards;
-    }
-
-    .topbar { animation-delay: 0.08s; }
-    .headline { animation-delay: 0.18s; }
-    .features { animation-delay: 0.28s; }
-    .pricing-box { animation-delay: 0.38s; }
-    .order-panel { animation-delay: 0.48s; }
-    .footer { animation-delay: 0.62s; }
-
-    .topbar {
+    .promo-row {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand img {
-      width: 62px;
-      height: 62px;
-      object-fit: contain;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.08);
-      padding: 8px;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: transform 0.35s ease;
-    }
-
-    .brand:hover img {
-      transform: rotate(-4deg) scale(1.04);
-    }
-
-    .brand-text small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
-
-    .brand-text strong {
-      font-size: 1.1rem;
-      font-weight: 800;
+      gap: 20px;
     }
 
     .badge {
-      padding: 10px 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: rgba(61, 34, 5, 0.66);
+      border: 1px solid rgba(233, 177, 68, 0.24);
+      color: #ffd578;
       border-radius: 999px;
-      background: rgba(243, 190, 85, 0.14);
-      border: 1px solid rgba(243, 190, 85, 0.26);
-      color: #ffe29f;
-      font-size: 0.95rem;
-      font-weight: 700;
-      animation: pulseGlow 2.8s ease-in-out infinite;
+      font-size: 1.05rem;
+      font-weight: 800;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .brand-copy {
+      text-align: right;
+      padding-top: 10px;
+    }
+
+    .subline {
+      font-size: 1rem;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .subline::before,
+    .subline::after {
+      content: "";
+      width: 62px;
+      height: 1px;
+      background: rgba(233, 177, 68, 0.55);
+      display: inline-block;
+    }
+
+    .brand-copy .brand-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #f2ede7;
+    }
+
+    .logo-panel {
+      width: 252px;
+      min-width: 252px;
+      aspect-ratio: 0.88;
+      border-radius: 34px;
+      border: 1px solid rgba(233, 177, 68, 0.32);
+      padding: 16px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 216, 121, 0.16), transparent 26%),
+        rgba(14, 9, 4, 0.88);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.03),
+        0 18px 40px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(232, 180, 75, 0.12));
     }
 
     .headline h1 {
-      font-size: clamp(2.3rem, 4vw, 4.8rem);
-      line-height: 1.1;
-      margin-bottom: 14px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-size: clamp(4rem, 7vw, 7rem);
+      line-height: 0.98;
+      font-weight: 900;
+      margin-bottom: 18px;
+      letter-spacing: -0.04em;
     }
 
-    .headline p {
-      color: var(--muted);
+    .desc {
       font-size: 1.1rem;
-      line-height: 1.9;
-      max-width: 580px;
+      line-height: 1.95;
+      max-width: 880px;
+    }
+
+    .desc .highlight {
+      color: var(--gold);
+      font-weight: 800;
     }
 
     .features {
       display: flex;
       flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .feature-chip {
+      display: inline-flex;
+      align-items: center;
       gap: 12px;
-    }
-
-    .chip {
-      padding: 10px 14px;
+      min-height: 64px;
+      padding: 14px 28px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: 0.3s ease;
+      background: rgba(17, 10, 4, 0.7);
+      border: 1px solid rgba(233, 177, 68, 0.2);
+      color: #f4ead7;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
     }
 
-    .chip:hover {
+    .feature-chip:hover,
+    .qty button:hover,
+    .qty button.active,
+    .price-box:hover,
+    .info-box:hover,
+    .trust-item:hover {
       transform: translateY(-3px);
-      background: rgba(255,255,255,0.1);
+      border-color: rgba(233, 177, 68, 0.34);
+    }
+
+    .pricing-box,
+    .order-grid,
+    .cta-row,
+    .trust-row {
+      display: grid;
+      gap: 18px;
     }
 
     .pricing-box {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      background: var(--card-strong);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 24px;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(13, 8, 3, 0.76);
+      border: 1px solid rgba(233, 177, 68, 0.2);
+      border-radius: 34px;
+      padding: 22px;
     }
 
-    .price-card {
-      background: rgba(255,255,255,0.04);
-      border-radius: 20px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.3s ease, border-color 0.3s ease;
+    .price-box {
+      min-height: 170px;
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(233, 177, 68, 0.12);
+      border-radius: 28px;
+      padding: 28px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: .25s ease;
     }
 
-    .price-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(243,190,85,0.28);
-    }
-
-    .price-card span {
-      display: block;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-size: 0.95rem;
-    }
-
-    .old-price strong {
-      font-size: 1.8rem;
-      color: #f9d2a0;
-      text-decoration: line-through;
-      opacity: 0.75;
-    }
-
-    .new-price strong {
-      font-size: 2.4rem;
-      color: var(--primary);
-    }
-
-    .order-panel {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: end;
-    }
-
-    .section-title {
+    .price-box .label,
+    .info-box .label {
       font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 12px;
+      color: #f0e3c9;
+      margin-bottom: 10px;
       font-weight: 700;
     }
 
+    .price-box .value {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .price-box.current .value,
+    .info-box .value {
+      color: var(--gold);
+    }
+
+    .price-box.old .value {
+      color: rgba(247,240,227,0.85);
+      text-decoration: line-through;
+      text-decoration-thickness: 3px;
+      text-decoration-color: #ff2a2a;
+    }
+
+    .order-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .info-box,
+    .qty-panel,
+    .cta-panel,
+    .trust-item {
+      background: rgba(13, 8, 3, 0.76);
+      border: 1px solid rgba(233, 177, 68, 0.16);
+      border-radius: 28px;
+      transition: .25s ease;
+    }
+
+    .qty-panel,
+    .info-box {
+      padding: 24px;
+    }
+
+    .qty-panel .label {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
     .qty {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, 92px);
+      justify-content: start;
+      gap: 16px;
     }
 
     .qty button {
-      min-width: 72px;
-      padding: 14px 18px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      border-radius: 16px;
-      cursor: pointer;
-      font: inherit;
-      font-weight: 800;
-      transition: 0.25s ease;
-    }
-
-    .qty button:hover,
-    .qty button.active {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #291805;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(243,190,85,0.25);
-      border-color: transparent;
-    }
-
-    .summary {
-      display: grid;
-      gap: 10px;
-      min-width: 240px;
-    }
-
-    .summary .total {
-      background: rgba(255,255,255,0.05);
+      height: 72px;
       border-radius: 18px;
-      padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(233, 177, 68, 0.16);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font: inherit;
+      font-size: 1.15rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .qty button.active {
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      color: #1f1204;
+      box-shadow: 0 14px 30px rgba(239, 185, 76, 0.22);
+    }
+
+    .info-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 174px;
       text-align: center;
-      transition: transform 0.3s ease;
     }
 
-    .summary .total:hover {
-      transform: translateY(-3px);
+    .info-box .value {
+      font-size: 3rem;
+      font-weight: 900;
     }
 
-    .summary .total span {
-      display: block;
-      color: var(--muted);
-      margin-bottom: 4px;
-      font-size: 0.9rem;
-    }
-
-    .summary .total strong {
-      color: var(--primary);
-      font-size: 1.8rem;
-    }
-
-    .cta-group {
-      display: grid;
-      gap: 10px;
+    .cta-row {
+      grid-template-columns: 1fr 0.9fr;
     }
 
     .cta,
     .whatsapp-btn {
+      min-height: 96px;
+      border: none;
+      border-radius: 24px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 14px;
+      padding: 18px 24px;
       text-decoration: none;
-      border: none;
-      border-radius: 18px;
-      padding: 16px 22px;
       font: inherit;
+      font-size: 1.18rem;
       font-weight: 800;
-      font-size: 1rem;
       cursor: pointer;
-      transition: 0.25s ease;
-    }
-
-    .cta {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #281604;
-      box-shadow: 0 12px 30px rgba(243,190,85,0.28);
+      transition: transform .25s ease, filter .25s ease, box-shadow .25s ease;
     }
 
     .cta:hover,
     .whatsapp-btn:hover {
-      transform: translateY(-2px) scale(1.01);
+      transform: translateY(-2px);
+      filter: brightness(1.03);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #f2bf54, #db9f2f);
+      color: #211202;
+      box-shadow: 0 18px 36px rgba(239, 185, 76, 0.22);
     }
 
     .whatsapp-btn {
-      background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-dark));
-      color: white;
-      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.24);
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      color: #fff;
+      box-shadow: 0 18px 36px rgba(15, 170, 67, 0.22);
     }
 
-    .visual {
-      position: relative;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255, 213, 122, 0.22), transparent 30%),
-        radial-gradient(circle at 80% 30%, rgba(255, 183, 0, 0.16), transparent 30%),
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-      border-inline-start: 1px solid var(--border);
+    .cta .txt,
+    .whatsapp-btn .txt {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 36px;
-      overflow: hidden;
+      line-height: 1.2;
     }
 
-    .visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 45%, transparent 65%);
-      transform: translateX(-100%);
-      animation: shine 5.5s ease-in-out infinite;
-    }
-
-    .visual-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .glow {
-      position: absolute;
-      width: min(420px, 88%);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(243,190,85,0.35), rgba(243,190,85,0.05) 55%, transparent 72%);
-      filter: blur(10px);
-      animation: pulseSoft 3.8s ease-in-out infinite;
-    }
-
-    .product {
-      position: relative;
-      z-index: 1;
-      width: min(470px, 88%);
-      object-fit: contain;
-      filter: drop-shadow(0 30px 50px rgba(0,0,0,0.35));
-      animation: floaty 4.2s ease-in-out infinite;
-    }
-
-    .floating-card {
-      position: absolute;
-      z-index: 2;
-      background: rgba(20, 14, 7, 0.8);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 14px 16px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
-      animation: revealUp 0.9s ease forwards;
-      opacity: 0;
-    }
-
-    .floating-card strong {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 4px;
-      font-size: 1rem;
-    }
-
-    .floating-card span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .card-1 { top: 10%; right: 8%; animation-delay: 0.55s; }
-    .card-2 { bottom: 12%; left: 8%; animation-delay: 0.72s; }
-
-    .footer {
-      margin-top: 18px;
-      text-align: center;
-      color: rgba(255, 245, 226, 0.78);
+    .cta .txt small,
+    .whatsapp-btn .txt small {
       font-size: 0.95rem;
+      opacity: .85;
+      font-weight: 700;
     }
 
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+    .trust-row {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 2px;
     }
 
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(243,190,85,0.12); }
-      50% { box-shadow: 0 0 0 10px rgba(243,190,85,0.02); }
+    .trust-item {
+      padding: 20px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 96px;
     }
 
-    @keyframes pulseSoft {
-      0%, 100% { transform: scale(0.98); opacity: 0.8; }
-      50% { transform: scale(1.04); opacity: 1; }
+    .trust-item .icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(239, 185, 76, 0.12);
+      border: 1px solid rgba(239, 185, 76, 0.18);
+      flex: 0 0 auto;
     }
+
+    .top-animate,
+    .headline,
+    .features,
+    .pricing-box,
+    .order-grid,
+    .cta-row,
+    .trust-row,
+    .visual-card,
+    .floating-note,
+    .mini-card,
+    .benefits-bar {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: revealUp .75s ease forwards;
+    }
+
+    .top-animate { animation-delay: .05s; }
+    .headline { animation-delay: .14s; }
+    .features { animation-delay: .24s; }
+    .pricing-box { animation-delay: .34s; }
+    .order-grid { animation-delay: .44s; }
+    .cta-row { animation-delay: .54s; }
+    .trust-row { animation-delay: .64s; }
+    .visual-card { animation-delay: .1s; }
+    .floating-note { animation-delay: .22s; }
+    .mini-card { animation-delay: .34s; }
+    .benefits-bar { animation-delay: .46s; }
 
     @keyframes revealUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes shine {
-      0% { transform: translateX(-120%); }
-      55%, 100% { transform: translateX(120%); }
-    }
-
-    @media (max-width: 980px) {
+    @media (max-width: 1280px) {
       .hero {
         grid-template-columns: 1fr;
       }
 
       .visual {
-        min-height: 420px;
-        border-inline-start: none;
-        border-top: 1px solid var(--border);
-        order: -1;
+        border-inline-end: none;
+        border-bottom: 1px solid var(--line);
+        min-height: 780px;
       }
 
-      .content {
-        padding: 28px;
+      .promo-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .brand-block {
+        justify-content: space-between;
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 860px) {
       body {
         padding: 14px;
         background-attachment: scroll;
       }
 
-      .pricing-box,
-      .order-panel {
+      .shell {
+        border-radius: 24px;
+      }
+
+      .visual,
+      .content {
+        padding: 18px;
+      }
+
+      .visual {
+        min-height: 520px;
+      }
+
+      .floating-note {
+        top: 24px;
+        left: 24px;
+        min-width: auto;
+        max-width: calc(100% - 48px);
+      }
+
+      .mini-card {
+        left: 24px;
+        bottom: 128px;
+      }
+
+      .benefits-bar {
+        right: 16px;
+        left: 16px;
+        bottom: 16px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .brand-block {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo-panel {
+        width: 190px;
+        min-width: 190px;
+      }
+
+      .headline h1 {
+        font-size: clamp(2.7rem, 11vw, 4rem);
+      }
+
+      .features,
+      .trust-row,
+      .cta-row,
+      .order-grid,
+      .pricing-box {
         grid-template-columns: 1fr;
       }
 
-      .qty button {
-        flex: 1 1 calc(50% - 6px);
-      }
-
-      .summary {
-        min-width: 100%;
-      }
-
-      .card-1,
-      .card-2 {
-        position: static;
-      }
-
-      .visual-inner {
-        flex-direction: column;
-        gap: 14px;
+      .qty {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <section class="card hero">
-      <div class="content">
-        <div class="topbar">
-          <div class="brand">
-            <img src="logo.png" alt="شعار عسل السلطان" />
-            <div class="brand-text">
-              <small>منتج طبيعي فاخر</small>
-              <strong>Asel Sultan Premium</strong>
-            </div>
+    <section class="shell">
+      <div class="hero">
+        <div class="visual">
+          <div class="visual-card">
+            <img class="main-product" src="product1.jpg" alt="منتج عسل السلطان" />
           </div>
-          <div class="badge">عرض خاص لفترة محدودة</div>
-        </div>
 
-        <div class="headline">
-          <h1>عسل السلطان</h1>
-          <p>
-            عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنح الزائر تجربة شراء أوضح، أسرع، وأكثر احترافية على جميع الأجهزة.
-          </p>
-        </div>
-
-        <div class="features">
-          <div class="chip">100% طبيعي</div>
-          <div class="chip">طاقة يومية</div>
-          <div class="chip">مذاق غني</div>
-          <div class="chip">تصميم متجاوب</div>
-        </div>
-
-        <div class="pricing-box">
-          <div class="price-card old-price">
-            <span>السعر قبل التخفيض</span>
-            <strong>200 DH</strong>
-          </div>
-          <div class="price-card new-price">
-            <span>السعر الحالي</span>
-            <strong id="unitPrice">150 DH</strong>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-title">الكمية</div>
-          <div class="order-panel">
-            <div class="qty" id="qtyButtons">
-              <button class="active" data-qty="1">1</button>
-              <button data-qty="2">2</button>
-              <button data-qty="3">3</button>
-              <button data-qty="4">4+</button>
-            </div>
-
-            <div class="summary">
-              <div class="total">
-                <span>الإجمالي</span>
-                <strong id="totalPrice">150 DH</strong>
-              </div>
-              <div class="cta-group">
-                <button class="cta">تأكيد الطلب</button>
-                <a class="whatsapp-btn" id="whatsappBtn" href="https://wa.me/212600000000?text=السلام%20عليكم%D8%8C%20أريد%20طلب%201%20من%20عسل%20السلطان%20بسعر%20150%20DH" target="_blank" rel="noopener noreferrer">
-                  <span>اطلب عبر واتساب</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="visual">
-        <div class="visual-inner">
-          <div class="glow"></div>
-          <img class="product" src="product1.jpg" alt="علبة عسل السلطان" />
-
-          <div class="floating-card card-1">
+          <div class="floating-note">
             <strong>عسل طبيعي</strong>
             <span>مظهر فاخر وثقة أكبر للعميل</span>
           </div>
 
-          <div class="floating-card card-2">
+          <div class="mini-card">
             <strong>تصميم عصري</strong>
             <span>وضوح أفضل للأسعار والطلب</span>
+          </div>
+
+          <div class="benefits-bar">
+            <div class="benefit-item">
+              <div class="icon">⚡</div>
+              <strong>100% طبيعي</strong>
+            </div>
+            <div class="benefit-item">
+              <div class="icon">⚡</div>
+              <strong>طاقة يومية</strong>
+            </div>
+            <div class="benefit-item">
+              <div class="icon">💧</div>
+              <strong>مذاق غني</strong>
+            </div>
+            <div class="benefit-item">
+              <div class="icon">💎</div>
+              <strong>تصميم متقن</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="promo-row top-animate">
+            <div class="badge"><span>🔥</span><span>عرض خاص لفترة محدودة</span></div>
+
+            <div class="brand-block">
+              <div class="logo-panel">
+                <img src="logo.png" alt="شعار Asel Sultan" />
+              </div>
+              <div class="brand-copy">
+                <div class="subline">منتج طبيعي فاخر</div>
+                <div class="brand-name">Asel Sultan Premium</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="headline">
+            <h1>عسل السلطان</h1>
+            <p class="desc">
+              عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنحك
+              تجربة شراء <span class="highlight">أوضح، أسرع، وأكثر احترافية</span> على جميع الأجهزة.
+            </p>
+          </div>
+
+          <div class="features">
+            <div class="feature-chip"><span class="icon">🍃</span><span>100% طبيعي</span></div>
+            <div class="feature-chip"><span class="icon">💧</span><span>طاقة غني</span></div>
+            <div class="feature-chip"><span class="icon">⚡</span><span>مذاق غني</span></div>
+            <div class="feature-chip"><span class="icon">💎</span><span>تصميم متقن</span></div>
+          </div>
+
+          <div class="pricing-box">
+            <div class="price-box old">
+              <div class="label">السعر قبل التخفيض</div>
+              <div class="value">DH 200</div>
+            </div>
+            <div class="price-box current">
+              <div class="label">السعر الحالي</div>
+              <div class="value" id="unitPrice">DH 150</div>
+            </div>
+          </div>
+
+          <div class="order-grid">
+            <div class="qty-panel">
+              <div class="label">الكمية</div>
+              <div class="qty" id="qtyButtons">
+                <button class="active" data-qty="1">1</button>
+                <button data-qty="2">2</button>
+                <button data-qty="3">3</button>
+                <button data-qty="4">+4</button>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <div class="label">الإجمالي</div>
+              <div class="value" id="totalPrice">DH 150</div>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <button class="cta" type="button">
+              <span class="icon">👜</span>
+              <span class="txt">تأكيد الطلب<small>طلب سريع ومباشر</small></span>
+            </button>
+
+            <a class="whatsapp-btn" id="whatsappBtn" href="#" target="_blank" rel="noopener noreferrer">
+              <span class="icon">🟢</span>
+              <span class="txt">اطلب عبر واتساب<small>تواصل مباشر وسريع</small></span>
+            </a>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-item">
+              <div class="icon-wrap"><span class="icon">💵</span></div>
+              <div>
+                <strong>دفع عند الاستلام</strong>
+                <small>راحة وأمان</small>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="icon-wrap"><span class="icon">🛡️</span></div>
+              <div>
+                <strong>جودة مضمونة</strong>
+                <small>أعلى معايير الجودة</small>
+              </div>
+            </div>
+            <div class="trust-item">
+              <div class="icon-wrap"><span class="icon">🚚</span></div>
+              <div>
+                <strong>توصيل سريع</strong>
+                <small>لكل المدن</small>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <p class="footer">© Asel Sultan Premium</p>
   </main>
 
   <script>
     const unitPrice = 150;
     const qtyButtons = document.querySelectorAll('#qtyButtons button');
     const totalPrice = document.getElementById('totalPrice');
+    const unitPriceText = document.getElementById('unitPrice');
     const whatsappBtn = document.getElementById('whatsappBtn');
 
     function updateOrder(qty) {
       const total = qty * unitPrice;
-      totalPrice.textContent = `${total} DH`;
+      totalPrice.textContent = `DH ${total}`;
+      unitPriceText.textContent = `DH ${unitPrice}`;
       const message = `السلام عليكم، أريد طلب ${qty} من عسل السلطان. السعر الإجمالي هو ${total} DH.`;
       whatsappBtn.href = `https://wa.me/212665191677?text=${encodeURIComponent(message)}`;
     }
