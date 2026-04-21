@@ -4,27 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Asel Sultan Premium</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #050301;
       --panel: rgba(18, 11, 4, 0.92);
-      --panel-2: rgba(28, 17, 7, 0.88);
       --gold: #f0bf52;
       --gold-2: #c88a1d;
-      --gold-soft: rgba(240, 191, 82, 0.14);
       --line: rgba(236, 176, 70, 0.35);
       --text: #f7f1e8;
       --muted: #d2c3aa;
       --green: #11a53a;
       --green-2: #0a8d31;
       --shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
-      --radius-xl: 34px;
-      --radius-lg: 24px;
-      --radius-md: 18px;
-      --radius-sm: 14px;
     }
 
     * {
@@ -43,82 +39,44 @@
     }
 
     body {
-      padding: 42px;
+      padding: 30px;
       overflow-x: hidden;
     }
 
     .page-shell {
-      max-width: 1840px;
+      max-width: 1800px;
       margin: 0 auto;
       background:
         linear-gradient(180deg, rgba(18, 10, 3, 0.88), rgba(10, 6, 2, 0.92)),
         url('background.jpg') center/cover no-repeat;
-      border: 1px solid rgba(240, 191, 82, 0.5);
+      border: 1px solid rgba(240, 191, 82, 0.45);
       border-radius: 36px;
       box-shadow: 0 0 0 1px rgba(240, 191, 82, 0.08) inset, var(--shadow);
       overflow: hidden;
       position: relative;
-      isolation: isolate;
-    }
-
-    .page-shell::before,
-    .page-shell::after {
-      content: "";
-      position: absolute;
-      inset: auto;
-      border-radius: 999px;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(32px);
-    }
-
-    .page-shell::before {
-      top: -80px;
-      left: -40px;
-      width: 360px;
-      height: 220px;
-      background: rgba(255, 170, 0, 0.12);
-    }
-
-    .page-shell::after {
-      bottom: -120px;
-      right: -60px;
-      width: 420px;
-      height: 280px;
-      background: rgba(255, 142, 0, 0.08);
     }
 
     .hero {
-      position: relative;
-      z-index: 1;
       display: grid;
-      grid-template-columns: 1.05fr 1.45fr;
-      min-height: 960px;
+      grid-template-columns: 1.02fr 1.38fr;
+      min-height: 940px;
     }
 
     .visual-panel,
     .content-panel {
-      position: relative;
       min-width: 0;
+      position: relative;
     }
 
     .visual-panel {
-      border-left: 1px solid rgba(240, 191, 82, 0.32);
-      padding: 42px 34px 28px;
+      border-left: 1px solid rgba(240, 191, 82, 0.28);
+      padding: 34px 28px 24px;
       background:
-        linear-gradient(180deg, rgba(12, 7, 2, 0.50), rgba(8, 5, 2, 0.72)),
+        linear-gradient(180deg, rgba(12, 7, 2, 0.55), rgba(8, 5, 2, 0.78)),
         url('background.jpg') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-    }
-
-    .visual-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 40% 35%, rgba(241, 173, 56, 0.14), transparent 22%);
-      pointer-events: none;
     }
 
     .mini-card {
@@ -129,8 +87,6 @@
       background: rgba(23, 14, 6, 0.68);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
       backdrop-filter: blur(8px);
-      position: relative;
-      z-index: 1;
     }
 
     .mini-card .topline {
@@ -153,38 +109,38 @@
     .product-visual {
       position: relative;
       margin: 20px auto 0;
-      flex: 1;
+      width: 100%;
+      height: 650px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      min-height: 560px;
-      padding-bottom: 34px;
+      padding-bottom: 42px;
     }
 
     .product-visual .slide {
       position: absolute;
       inset: 0;
-      margin: auto;
-      max-width: 88%;
-      max-height: 760px;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
       filter: drop-shadow(0 35px 55px rgba(0,0,0,0.58));
       user-select: none;
       -webkit-user-drag: none;
-      opacity: 0;
-      transition: opacity 1s ease;
       pointer-events: none;
     }
 
     .product-visual .slide.active {
       opacity: 1;
+      z-index: 2;
     }
 
     .slider-dots {
       position: absolute;
+      bottom: 0;
       left: 50%;
-      bottom: -6px;
       transform: translateX(-50%);
       display: flex;
       align-items: center;
@@ -192,29 +148,26 @@
       gap: 10px;
       padding: 10px 16px;
       border-radius: 999px;
-      background: rgba(18, 11, 4, 0.72);
+      background: rgba(18, 11, 4, 0.78);
       border: 1px solid rgba(240, 191, 82, 0.14);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24), inset 0 0 0 1px rgba(255,255,255,0.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.24), inset 0 0 0 1px rgba(255,255,255,0.02);
       backdrop-filter: blur(10px);
-      z-index: 3;
+      z-index: 5;
     }
 
     .slider-dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      border: 0;
+      border: none;
       padding: 0;
       background: rgba(255, 236, 202, 0.28);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
       cursor: pointer;
-      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
-      opacity: 0.9;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .slider-dot:hover,
-    .slider-dot:focus-visible {
-      outline: none;
+    .slider-dot:hover {
       transform: scale(1.12);
       background: rgba(240, 191, 82, 0.72);
     }
@@ -223,23 +176,19 @@
       background: radial-gradient(circle at 30% 30%, #fff2cc, #f0bf52 60%, #c88a1d 100%);
       box-shadow: 0 0 0 4px rgba(240, 191, 82, 0.12), 0 0 14px rgba(240, 191, 82, 0.4);
       transform: scale(1.18);
-      opacity: 1;
-    }
-      50% { transform: translateY(-12px) rotate(-4deg); }
     }
 
     .left-features {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0;
       border-radius: 28px;
-      border: 1px solid rgba(240, 191, 82, 0.32);
+      border: 1px solid rgba(240, 191, 82, 0.28);
       background: rgba(14, 9, 3, 0.86);
       overflow: hidden;
     }
 
     .left-feature {
-      padding: 20px 12px 18px;
+      padding: 18px 10px 16px;
       text-align: center;
       border-left: 1px solid rgba(240, 191, 82, 0.18);
     }
@@ -256,18 +205,18 @@
       height: 42px;
       margin-bottom: 8px;
       color: var(--gold);
-      font-size: 1.45rem;
+      font-size: 1.4rem;
     }
 
     .left-feature .label {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: #efe4d2;
       line-height: 1.5;
       font-weight: 700;
     }
 
     .content-panel {
-      padding: 42px 30px 28px 32px;
+      padding: 36px 28px 24px 30px;
       background:
         radial-gradient(circle at 25% 10%, rgba(211, 141, 20, 0.10), transparent 18%),
         linear-gradient(180deg, rgba(10, 6, 2, 0.56), rgba(9, 5, 2, 0.78));
@@ -281,22 +230,17 @@
       margin-bottom: 12px;
     }
 
-    .brand-meta {
-      min-width: 0;
-    }
-
     .offer-badge {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      padding: 12px 26px;
+      padding: 12px 24px;
       border-radius: 999px;
       background: linear-gradient(90deg, rgba(255, 183, 67, 0.18), rgba(111, 67, 7, 0.34));
       border: 1px solid rgba(240, 191, 82, 0.22);
       color: var(--gold);
       font-weight: 800;
-      font-size: 1.15rem;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+      font-size: 1.1rem;
     }
 
     .brand-subtitle {
@@ -326,7 +270,7 @@
     }
 
     .logo-card {
-      width: 332px;
+      width: 280px;
       max-width: 100%;
       aspect-ratio: 0.92 / 1;
       border-radius: 34px;
@@ -346,7 +290,6 @@
       border: 3px solid rgba(240, 191, 82, 0.86);
       clip-path: polygon(50% 0%, 90% 11%, 100% 46%, 100% 82%, 50% 100%, 0% 82%, 0% 46%, 10% 11%);
       pointer-events: none;
-      box-shadow: 0 0 24px rgba(240, 191, 82, 0.12);
     }
 
     .logo-card::after {
@@ -372,8 +315,8 @@
     }
 
     h1 {
-      margin: 30px 0 10px;
-      font-size: clamp(3.3rem, 5.7vw, 6.25rem);
+      margin: 26px 0 10px;
+      font-size: clamp(3rem, 5.5vw, 6rem);
       line-height: 1.02;
       font-weight: 900;
       letter-spacing: -0.04em;
@@ -384,7 +327,7 @@
       margin: 0 0 24px;
       max-width: 880px;
       color: #eee3d2;
-      font-size: clamp(1.2rem, 1.55vw, 2rem);
+      font-size: clamp(1.15rem, 1.5vw, 1.9rem);
       line-height: 1.9;
     }
 
@@ -397,26 +340,25 @@
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      margin-bottom: 36px;
+      margin-bottom: 34px;
     }
 
     .chip {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 26px;
+      padding: 16px 24px;
       border-radius: 999px;
       border: 1px solid rgba(240, 191, 82, 0.22);
       background: rgba(18, 11, 4, 0.82);
       color: #f3e8d9;
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
     }
 
     .chip .icon {
       color: var(--gold);
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       line-height: 1;
     }
 
@@ -435,7 +377,7 @@
     }
 
     .price-card {
-      padding: 30px 24px 28px;
+      padding: 28px 22px 26px;
       text-align: center;
       position: relative;
     }
@@ -514,11 +456,9 @@
       font-family: inherit;
     }
 
-    .qty-btn:hover,
-    .qty-btn:focus-visible {
+    .qty-btn:hover {
       transform: translateY(-2px);
       border-color: rgba(240, 191, 82, 0.36);
-      outline: none;
     }
 
     .qty-btn.active {
@@ -555,18 +495,18 @@
     }
 
     .action-btn {
-      min-height: 112px;
+      min-height: 110px;
       border: 0;
       border-radius: 24px;
       font-family: inherit;
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 900;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 16px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      transition: transform 0.2s ease;
       text-decoration: none;
       padding: 16px 18px;
     }
@@ -595,7 +535,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
 
     .whatsapp-btn .sub {
@@ -636,59 +576,21 @@
 
     .bottom-item .text strong {
       display: block;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: #f4e8d7;
       margin-bottom: 2px;
     }
 
     .bottom-item .text span {
       color: #cdbda6;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       line-height: 1.6;
       font-weight: 700;
     }
 
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .inline-icon {
-      width: 1.2em;
-      height: 1.2em;
-      vertical-align: middle;
-      fill: currentColor;
-    }
-
-    @media (max-width: 1440px) {
-      .hero {
-        grid-template-columns: 0.95fr 1.3fr;
-      }
-
-      .logo-card {
-        width: 260px;
-      }
-
-      .content-panel,
-      .visual-panel {
-        padding-top: 28px;
-      }
-
-      .description {
-        font-size: 1.28rem;
-      }
-    }
-
     @media (max-width: 1180px) {
       body {
-        padding: 20px;
+        padding: 18px;
       }
 
       .hero {
@@ -698,7 +600,6 @@
       .visual-panel {
         border-left: 0;
         border-bottom: 1px solid rgba(240, 191, 82, 0.28);
-        min-height: auto;
       }
 
       .brand-row {
@@ -706,14 +607,18 @@
       }
 
       .logo-card {
-        width: min(320px, 100%);
+        width: min(280px, 100%);
         margin-inline-start: auto;
+      }
+
+      .product-visual {
+        height: 520px;
       }
     }
 
     @media (max-width: 820px) {
       body {
-        padding: 12px;
+        padding: 10px;
       }
 
       .page-shell {
@@ -725,55 +630,42 @@
         padding: 18px 14px 16px;
       }
 
-      .mini-card {
-        width: 100%;
-      }
-
-      .left-features,
-      .bottom-features,
+      .pricing-row,
       .order-grid,
       .action-row,
-      .pricing-row {
+      .bottom-features,
+      .left-features {
         grid-template-columns: 1fr;
       }
 
-      .left-feature,
-      .price-card + .price-card::before {
+      .left-feature {
         border-left: 0;
+        border-bottom: 1px solid rgba(240, 191, 82, 0.18);
+      }
+
+      .left-feature:last-child {
+        border-bottom: 0;
       }
 
       .qty-options {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .action-btn {
-        min-height: 92px;
-      }
-
-      .product-visual {
-        min-height: 380px;
-      }
-
-      .product-visual img {
-        max-width: 96%;
-      }
-
-      .chips {
-        gap: 12px;
-      }
-
       .chip {
         width: 100%;
         justify-content: center;
-        font-size: 1.03rem;
       }
 
-      .bottom-item {
-        padding: 16px;
+      .product-visual {
+        height: 400px;
       }
 
       .logo-card {
         width: 220px;
+      }
+
+      .price-card + .price-card::before {
+        display: none;
       }
     }
   </style>
@@ -781,6 +673,7 @@
 <body>
   <main class="page-shell">
     <section class="hero">
+
       <aside class="content-panel">
         <div class="brand-row">
           <div class="brand-meta">
@@ -800,11 +693,12 @@
           </div>
 
           <div class="logo-card">
-            <img src="logo.png" alt="Asel Sultan Premium Logo" />
+            <img src="logo.png" alt="Asel Sultan Premium Logo">
           </div>
         </div>
 
         <h1>عسل السلطان</h1>
+
         <p class="description">
           عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنحك تجربة شراء
           <span class="accent">أوضح، أسرع، وأكثر احترافية</span>
@@ -818,14 +712,13 @@
           <div class="chip"><span class="icon">💎</span><span>تصميم متقن</span></div>
         </div>
 
-        <section class="order-box" aria-labelledby="order-box-title">
-          <h2 id="order-box-title" class="sr-only">تفاصيل الطلب</h2>
-
+        <section class="order-box">
           <div class="pricing-row">
             <div class="price-card old-price">
               <div class="price-label">السعر قبل التخفيض</div>
               <div class="price-value">DH 200</div>
             </div>
+
             <div class="price-card">
               <div class="price-label">السعر الحالي</div>
               <div class="price-value">DH 150</div>
@@ -855,19 +748,19 @@
             <a
               class="action-btn whatsapp-btn"
               id="whatsappBtn"
-              href="https://wa.me/212600000000?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B3%D9%84%20%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86%20-%204%20%D8%B9%D9%84%D8%A8"
+              href="https://wa.me/212600000000?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B3%D9%84%20%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div class="main">
-                <span style="font-size: 1.6rem;">🟢</span>
+                <span style="font-size: 1.5rem;">🟢</span>
                 <span>اطلب عبر واتساب</span>
               </div>
               <div class="sub">تواصل مباشر وسريع</div>
             </a>
 
             <button class="action-btn confirm-btn" id="confirmBtn" type="button">
-              <span style="font-size: 1.5rem;">👜</span>
+              <span style="font-size: 1.4rem;">👜</span>
               <span>تأكيد الطلب</span>
             </button>
           </div>
@@ -880,6 +773,7 @@
                 <span>راحة وأمان</span>
               </div>
             </div>
+
             <div class="bottom-item">
               <div class="icon-wrap">🛡️</div>
               <div class="text">
@@ -887,6 +781,7 @@
                 <span>أعلى معايير الجودة</span>
               </div>
             </div>
+
             <div class="bottom-item">
               <div class="icon-wrap">🚚</div>
               <div class="text">
@@ -908,11 +803,11 @@
         </div>
 
         <div class="product-visual">
-          <img src="product1.jpg" alt="منتج عسل السلطان 1" class="slide active" />
-          <img src="product2.jpg" alt="منتج عسل السلطان 2" class="slide" />
-          <img src="product3.jpg" alt="منتج عسل السلطان 3" class="slide" />
+          <img src="product1.jpg" alt="منتج عسل السلطان 1" class="slide active">
+          <img src="product2.jpg" alt="منتج عسل السلطان 2" class="slide">
+          <img src="product3.jpg" alt="منتج عسل السلطان 3" class="slide">
 
-          <div class="slider-dots" aria-label="مؤشرات الصور">
+          <div class="slider-dots">
             <button class="slider-dot active" type="button" data-slide="0" aria-label="الصورة الأولى"></button>
             <button class="slider-dot" type="button" data-slide="1" aria-label="الصورة الثانية"></button>
             <button class="slider-dot" type="button" data-slide="2" aria-label="الصورة الثالثة"></button>
@@ -933,11 +828,12 @@
             <div class="label">طاقة يومية</div>
           </div>
           <div class="left-feature">
-            <div class="icon">⚡</div>
+            <div class="icon">🍃</div>
             <div class="label">100% طبيعي</div>
           </div>
         </div>
       </aside>
+
     </section>
   </main>
 
@@ -947,15 +843,22 @@
     const totalPrice = document.getElementById('totalPrice');
     const whatsappBtn = document.getElementById('whatsappBtn');
     const confirmBtn = document.getElementById('confirmBtn');
+
     const slides = document.querySelectorAll('.product-visual .slide');
     const dots = document.querySelectorAll('.slider-dot');
 
     let selectedQty = 4;
     let currentSlide = 0;
+    let slideshowTimer = null;
+    const slideDuration = 3000;
 
     function updateOrderUI() {
-      totalPrice.textContent = `DH ${unitPrice * selectedQty}`;
-      const message = encodeURIComponent(`أريد طلب عسل السلطان - الكمية: ${selectedQty} - الإجمالي: DH ${unitPrice * selectedQty}`);
+      const total = unitPrice * selectedQty;
+      totalPrice.textContent = `DH ${total}`;
+
+      const message = encodeURIComponent(
+        `أريد طلب عسل السلطان - الكمية: ${selectedQty} - الإجمالي: DH ${total}`
+      );
       whatsappBtn.href = `https://wa.me/212600000000?text=${message}`;
     }
 
@@ -967,23 +870,22 @@
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === index);
       });
-    });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
     }
 
     function startSlideshow() {
-      if (!slides.length) return;
-      setInterval(() => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      }, 3000);
+      stopSlideshow();
+      slideshowTimer = setInterval(nextSlide, slideDuration);
     }
 
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        currentSlide = Number(dot.dataset.slide);
-        showSlide(currentSlide);
-      });
-    });, 3000);
+    function stopSlideshow() {
+      if (slideshowTimer) {
+        clearInterval(slideshowTimer);
+      }
     }
 
     qtyButtons.forEach((button) => {
@@ -995,13 +897,11 @@
       });
     });
 
-    confirmBtn.addEventListener('click', () => {
-      alert(`تم اختيار ${selectedQty} علبة. يمكنك ربط هذا الزر بفورم الطلب أو صفحة الدفع.`);
-    });
-
-    updateOrderUI();
-    showSlide(currentSlide);
-    startSlideshow();
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        currentSlide = Number(dot.dataset.slide);
+        showSlide(currentSlide);
+        startSlideshow();
       });
     });
 
@@ -1010,6 +910,8 @@
     });
 
     updateOrderUI();
+    showSlide(currentSlide);
+    startSlideshow();
   </script>
 </body>
 </html>
