@@ -140,6 +140,12 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
+    .slide-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
     .visual-box::after {
       content: "";
       position: absolute;
@@ -150,46 +156,28 @@
     }
 
     .visual-image {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       transform: scale(1.01);
+      opacity: 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      pointer-events: none;
+    }
+
+    .visual-image.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .visual-image.prev,
+    .visual-image.next {
+      opacity: 0;
     }
 
     .glass-card,
-    .bottom-strip {
-      position: absolute;
-      z-index: 2;
-      background: rgba(16, 11, 5, 0.74);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(239,185,76,0.15);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-    }
-
-    .glass-card {
-      top: 44px;
-      left: 44px;
-      padding: 18px 24px;
-      border-radius: 24px;
-      min-width: 320px;
-    }
-
-    .glass-card .row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #ffe09b;
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 5px;
-    }
-
-    .glass-card p {
-      font-size: 0.96rem;
-      color: var(--text);
-      opacity: 0.95;
-    }
-
     .bottom-strip {
       right: 20px;
       left: 20px;
@@ -200,6 +188,68 @@
       padding: 12px 6px;
       direction: rtl;
       align-items: center;
+    }
+
+    .slide-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 86px;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      direction: ltr;
+    }
+
+    .slide-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.35);
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+      opacity: 0.9;
+    }
+
+    .slide-dot.active {
+      background: var(--gold);
+      transform: scale(1.2);
+      opacity: 1;
+    }
+
+    .slide-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(239,185,76,0.22);
+      background: rgba(10, 7, 3, 0.58);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .slide-nav:hover {
+      background: rgba(239,185,76,0.18);
+      border-color: rgba(239,185,76,0.42);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .slide-nav.prev {
+      left: 18px;
+    }
+
+    .slide-nav.next {
+      right: 18px;
     }
 
     .strip-item {
@@ -761,6 +811,15 @@
         min-height: 520px;
       }
 
+      .slide-nav {
+        width: 38px;
+        height: 38px;
+      }
+
+      .slide-dots {
+        bottom: 78px;
+      }
+
       .glass-card {
         top: 18px;
         left: 18px;
@@ -839,7 +898,16 @@
       <div class="hero">
         <div class="left-side">
           <div class="visual-box" data-reveal>
-            <img class="visual-image" src="hero-product.jpg" alt="عسل السلطان" onerror="this.onerror=null;this.src='product1.jpg';" />
+            <div class="slide-track" id="slideTrack">
+              <img class="visual-image active" src="hero-product.jpg" alt="عسل السلطان" onerror="this.onerror=null;this.src='product1.jpg';" />
+              <img class="visual-image" src="product1.jpg" alt="عسل السلطان" />
+              <img class="visual-image" src="product2.jpg" alt="عسل السلطان" />
+              <img class="visual-image" src="product3.jpg" alt="عسل السلطان" />
+            </div>
+
+            <button class="slide-nav prev" id="prevSlide" type="button" aria-label="Previous slide">&#10094;</button>
+            <button class="slide-nav next" id="nextSlide" type="button" aria-label="Next slide">&#10095;</button>
+            <div class="slide-dots" id="slideDots"></div>
 
             <div class="glass-card" data-reveal>
               <div class="row"><span>👑</span><span>عسل طبيعي</span></div>
@@ -998,8 +1066,14 @@
     const whatsappBtn = document.getElementById('whatsappBtn');
     const confirmBtn = document.getElementById('confirmBtn');
     const revealEls = [...document.querySelectorAll('[data-reveal]')];
+    const slides = [...document.querySelectorAll('.visual-image')];
+    const slideDots = document.getElementById('slideDots');
+    const prevSlideBtn = document.getElementById('prevSlide');
+    const nextSlideBtn = document.getElementById('nextSlide');
 
     let currentQty = 4;
+    let currentSlide = 0;
+    let slideInterval;
 
     function updateOrder(qty) {
       currentQty = qty;
@@ -1032,6 +1106,64 @@
       observer.observe(el);
     });
 
+    function buildSlideDots() {
+      if (!slideDots || !slides.length) return;
+      slideDots.innerHTML = '';
+      slides.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = `slide-dot ${index === currentSlide ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Slide ${index + 1}`);
+        dot.addEventListener('click', () => {
+          goToSlide(index);
+          restartSlideShow();
+        });
+        slideDots.appendChild(dot);
+      });
+    }
+
+    function goToSlide(index) {
+      if (!slides.length) return;
+      currentSlide = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlide);
+      });
+      [...slideDots.children].forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+
+    function restartSlideShow() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 3500);
+    }
+
+    if (prevSlideBtn) {
+      prevSlideBtn.addEventListener('click', () => {
+        prevSlide();
+        restartSlideShow();
+      });
+    }
+
+    if (nextSlideBtn) {
+      nextSlideBtn.addEventListener('click', () => {
+        nextSlide();
+        restartSlideShow();
+      });
+    }
+
+    buildSlideDots();
+    goToSlide(0);
+    restartSlideShow();
+
     function subtleParallax() {
       const shell = document.querySelector('.shell');
       if (!shell) return;
@@ -1040,14 +1172,14 @@
         const rect = shell.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const visual = document.querySelector('.visual-image');
+        const visual = document.querySelector('.visual-image.active');
         const logo = document.querySelector('.logo-box');
         if (visual) visual.style.transform = `scale(1.01) translate(${x * -8}px, ${y * -8}px)`;
         if (logo) logo.style.transform = `translate(${x * 6}px, ${y * 6}px)`;
       });
 
       shell.addEventListener('mouseleave', () => {
-        const visual = document.querySelector('.visual-image');
+        const visual = document.querySelector('.visual-image.active');
         const logo = document.querySelector('.logo-box');
         if (visual) visual.style.transform = 'scale(1.01) translate(0, 0)';
         if (logo) logo.style.transform = 'translate(0, 0)';
