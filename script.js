@@ -1,4 +1,6 @@
 const unitPrice = 150;
+const phoneNumber = "212665191677";
+
 const qtyButtons = document.querySelectorAll(".qty-btn");
 const totalPrice = document.getElementById("totalPrice");
 const whatsappBtn = document.getElementById("whatsappBtn");
@@ -15,10 +17,10 @@ function updateOrderUI() {
   totalPrice.textContent = `DH ${total}`;
 
   const message = encodeURIComponent(
-    `أريد طلب عسل السلطان - الكمية: ${selectedQty} - الإجمالي: DH ${total}`
+    `السلام عليكم، أريد طلب عسل السلطان.\nالكمية: ${selectedQty}\nالإجمالي: DH ${total}`
   );
 
-  whatsappBtn.href = `https://wa.me/212665191677?text=${message}`;
+  whatsappBtn.href = `https://wa.me/${phoneNumber}?text=${message}`;
 }
 
 function showSlide(index) {
@@ -28,22 +30,26 @@ function showSlide(index) {
 
   dots.forEach((dot, i) => {
     dot.classList.toggle("active", i === index);
+    dot.setAttribute("aria-pressed", i === index ? "true" : "false");
   });
 }
 
 function nextSlide() {
+  if (!slides.length) return;
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 }
 
 function startSlideshow() {
+  if (slides.length <= 1) return;
   stopSlideshow();
-  slideshowInterval = setInterval(nextSlide, 3000);
+  slideshowInterval = setInterval(nextSlide, 3500);
 }
 
 function stopSlideshow() {
   if (slideshowInterval) {
     clearInterval(slideshowInterval);
+    slideshowInterval = null;
   }
 }
 
@@ -64,8 +70,19 @@ dots.forEach((dot) => {
   });
 });
 
-confirmBtn.addEventListener("click", () => {
-  alert(`تم اختيار ${selectedQty} علبة. يمكنك ربط هذا الزر بفورم الطلب أو صفحة الدفع.`);
+confirmBtn?.addEventListener("click", () => {
+  const total = unitPrice * selectedQty;
+  alert(
+    `تم اختيار ${selectedQty} علبة. الإجمالي هو DH ${total}. يمكنك ربط هذا الزر بفورم الطلب أو صفحة الدفع.`
+  );
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    stopSlideshow();
+  } else {
+    startSlideshow();
+  }
 });
 
 updateOrderUI();

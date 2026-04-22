@@ -4,20 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Asel Sultan Premium</title>
+  <meta name="description" content="واجهة هبوط فاخرة لمنتج عسل السلطان بتصميم داكن وذهبي متوافق مع جميع الأجهزة." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.updated.css" />
 </head>
 <body>
   <main class="page-shell">
     <section class="hero">
+      <aside class="visual-panel">
+        <div class="mini-card glass-card">
+          <div class="topline">
+            <span>👑</span>
+            <span>عسل طبيعي</span>
+          </div>
+          <p>مظهر فاخر وثقة أكبر للعميل</p>
+        </div>
+
+        <div class="product-stage">
+          <div class="product-glow" aria-hidden="true"></div>
+
+          <div class="product-visual">
+            <img src="product1.jpg" alt="منتج عسل السلطان 1" class="slide active" />
+            <img src="product2.jpg" alt="منتج عسل السلطان 2" class="slide" />
+            <img src="product3.jpg" alt="منتج عسل السلطان 3" class="slide" />
+          </div>
+
+          <div class="slider-dots" aria-label="مؤشرات الصور">
+            <button class="slider-dot active" type="button" data-slide="0" aria-label="الصورة الأولى"></button>
+            <button class="slider-dot" type="button" data-slide="1" aria-label="الصورة الثانية"></button>
+            <button class="slider-dot" type="button" data-slide="2" aria-label="الصورة الثالثة"></button>
+          </div>
+        </div>
+
+        <div class="left-features glass-card">
+          <div class="left-feature">
+            <div class="icon">⚡</div>
+            <div class="label">100% طبيعي</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">⚡</div>
+            <div class="label">طاقة يومية</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">💧</div>
+            <div class="label">مذاق غني</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">💎</div>
+            <div class="label">تصميم متقن</div>
+          </div>
+        </div>
+      </aside>
+
       <aside class="content-panel">
         <div class="brand-row">
           <div class="brand-meta">
             <div class="offer-badge">
-              <span>🔥</span>
+              <span class="badge-fire">🔥</span>
               <span>عرض خاص لفترة محدودة</span>
             </div>
 
@@ -31,16 +77,18 @@
             </div>
           </div>
 
-          <div class="logo-card">
-            <img src="logo.png" alt="Asel Sultan Premium Logo" />
+          <div class="logo-card" aria-label="شعار عسل السلطان">
+            <div class="logo-shield">
+              <img src="logo.png" alt="Asel Sultan Premium Logo" />
+            </div>
           </div>
         </div>
 
         <h1>عسل السلطان</h1>
 
         <p class="description">
-          عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنحك تجربة شراء
-          <span class="accent">أوضح، أسرع، وأكثر احترافية</span>
+          عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنحك
+          تجربة شراء <span class="accent">أوضح، أسرع، وأكثر احترافية</span>
           على جميع الأجهزة.
         </p>
 
@@ -55,37 +103,42 @@
           <h2 id="order-box-title" class="sr-only">تفاصيل الطلب</h2>
 
           <div class="pricing-row">
+            <div class="price-card current-price">
+              <div class="price-label">السعر الحالي</div>
+              <div class="price-value">DH 150</div>
+            </div>
+
             <div class="price-card old-price">
               <div class="price-label">السعر قبل التخفيض</div>
               <div class="price-value">DH 200</div>
             </div>
-
-            <div class="price-card">
-              <div class="price-label">السعر الحالي</div>
-              <div class="price-value">DH 150</div>
-            </div>
           </div>
 
           <div class="order-grid">
+            <div class="qty-box">
+              <div class="field-title">الكمية</div>
+              <div class="qty-options">
+                <button class="qty-btn active" type="button" data-qty="4">+4</button>
+                <button class="qty-btn" type="button" data-qty="3">3</button>
+                <button class="qty-btn" type="button" data-qty="2">2</button>
+                <button class="qty-btn" type="button" data-qty="1">1</button>
+              </div>
+            </div>
+
             <div class="total-box">
               <div>
                 <div class="total-label">الإجمالي</div>
                 <div class="total-value" id="totalPrice">DH 600</div>
               </div>
             </div>
-
-            <div class="qty-box">
-              <div class="field-title">الكمية</div>
-              <div class="qty-options">
-                <button class="qty-btn" type="button" data-qty="1">1</button>
-                <button class="qty-btn" type="button" data-qty="2">2</button>
-                <button class="qty-btn" type="button" data-qty="3">3</button>
-                <button class="qty-btn active" type="button" data-qty="4">+4</button>
-              </div>
-            </div>
           </div>
 
           <div class="action-row">
+            <button class="action-btn confirm-btn" id="confirmBtn" type="button">
+              <span class="bag-icon">👜</span>
+              <span>تأكيد الطلب</span>
+            </button>
+
             <a
               class="action-btn whatsapp-btn"
               id="whatsappBtn"
@@ -98,23 +151,18 @@
                   <path fill="currentColor" d="M19.11 17.21c-.27-.14-1.58-.78-1.82-.87-.24-.09-.42-.14-.59.14-.18.27-.68.87-.84 1.05-.15.18-.31.2-.58.07-.27-.14-1.12-.41-2.14-1.29-.79-.7-1.33-1.57-1.49-1.84-.15-.27-.02-.41.11-.54.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.59-1.43-.81-1.96-.21-.51-.43-.44-.59-.45h-.5c-.18 0-.46.07-.7.34-.24.27-.92.9-.92 2.2s.94 2.55 1.07 2.73c.14.18 1.84 2.81 4.46 3.94.62.27 1.11.43 1.49.55.63.2 1.2.17 1.65.1.5-.08 1.58-.65 1.8-1.28.22-.63.22-1.17.15-1.28-.06-.11-.24-.18-.5-.32Z"/>
                   <path fill="currentColor" d="M16.03 3.2c-7.07 0-12.8 5.7-12.8 12.74 0 2.25.59 4.44 1.71 6.37L3 29l6.91-1.8a12.87 12.87 0 0 0 6.12 1.56h.01c7.06 0 12.79-5.71 12.79-12.75 0-3.41-1.33-6.61-3.76-9.02a12.76 12.76 0 0 0-9.04-3.79Zm0 23.4h-.01a10.7 10.7 0 0 1-5.45-1.49l-.39-.23-4.1 1.07 1.09-3.98-.25-.41a10.55 10.55 0 0 1-1.63-5.61c0-5.88 4.81-10.67 10.74-10.67 2.86 0 5.56 1.11 7.58 3.12a10.56 10.56 0 0 1 3.15 7.54c0 5.88-4.82 10.66-10.73 10.66Z"/>
                 </svg>
-                <span>اطلب عبر الواتساب</span>
+                <span>اطلب عبر واتساب</span>
               </div>
-              <div class="sub">+212665191677</div>
+              <div class="sub">تواصل مباشر وسريع</div>
             </a>
-
-            <button class="action-btn confirm-btn" id="confirmBtn" type="button">
-              <span class="bag-icon">👜</span>
-              <span>تأكيد الطلب</span>
-            </button>
           </div>
 
           <div class="bottom-features">
             <div class="bottom-item">
-              <div class="icon-wrap">💵</div>
+              <div class="icon-wrap">🚚</div>
               <div class="text">
-                <strong>دفع عند الاستلام</strong>
-                <span>راحة وأمان</span>
+                <strong>توصيل سريع</strong>
+                <span>لكل المدن</span>
               </div>
             </div>
 
@@ -127,59 +175,18 @@
             </div>
 
             <div class="bottom-item">
-              <div class="icon-wrap">🚚</div>
+              <div class="icon-wrap">💵</div>
               <div class="text">
-                <strong>توصيل سريع</strong>
-                <span>لكل المدن</span>
+                <strong>دفع عند الاستلام</strong>
+                <span>راحة وأمان</span>
               </div>
             </div>
           </div>
         </section>
       </aside>
-
-      <aside class="visual-panel">
-        <div class="mini-card">
-          <div class="topline">
-            <span>👑</span>
-            <span>عسل طبيعي</span>
-          </div>
-          <p>مظهر فاخر وثقة أكبر للعميل</p>
-        </div>
-
-        <div class="product-visual">
-          <img src="product1.jpg" alt="منتج عسل السلطان 1" class="slide active" />
-          <img src="product2.jpg" alt="منتج عسل السلطان 2" class="slide" />
-          <img src="product3.jpg" alt="منتج عسل السلطان 3" class="slide" />
-
-          <div class="slider-dots" aria-label="مؤشرات الصور">
-            <button class="slider-dot active" type="button" data-slide="0" aria-label="الصورة الأولى"></button>
-            <button class="slider-dot" type="button" data-slide="1" aria-label="الصورة الثانية"></button>
-            <button class="slider-dot" type="button" data-slide="2" aria-label="الصورة الثالثة"></button>
-          </div>
-        </div>
-
-        <div class="left-features">
-          <div class="left-feature">
-            <div class="icon">💎</div>
-            <div class="label">تصميم متقن</div>
-          </div>
-          <div class="left-feature">
-            <div class="icon">💧</div>
-            <div class="label">مذاق غني</div>
-          </div>
-          <div class="left-feature">
-            <div class="icon">⚡</div>
-            <div class="label">طاقة يومية</div>
-          </div>
-          <div class="left-feature">
-            <div class="icon">🍃</div>
-            <div class="label">100% طبيعي</div>
-          </div>
-        </div>
-      </aside>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="script.updated.js"></script>
 </body>
 </html>
