@@ -1,120 +1,95 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asel Sultan | عسل السلطان</title>
+  <title>Asel Sultan | Pure Honey</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="landing">
 
+  <main class="hero-page">
     <header class="navbar">
-      <a class="logo-box" href="#">
+      <a href="#" class="logo">
         <img src="logo.png" alt="Asel Sultan Logo">
       </a>
 
-      <nav class="nav-links">
+      <nav class="menu">
         <a href="#">Home</a>
         <a href="#product">Product</a>
-        <a href="#order">Order</a>
+        <a href="#service">Service</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <section class="hero">
-      <div class="hero-copy">
-        <p class="healthy">HEALTHY</p>
+      <div class="left-content">
+        <div class="healthy">HEALTHY</div>
 
-        <h1>
-          PURE <span>HONEY</span>
-        </h1>
+        <h1>PURE <span>HONEY</span></h1>
 
-        <h2>
-          عسل السلطان
-          <span>Natural Premium Honey</span>
-        </h2>
+        <h2>Natural <span>Asel Sultan</span></h2>
 
-        <div class="orange-line"></div>
+        <div class="underline"></div>
 
         <p class="description">
-          عسل طبيعي فاخر بمذاق غني وجودة عالية. اطلب الآن عبر واتساب والدفع عند الاستلام.
+          عسل السلطان، عسل طبيعي فاخر بمذاق غني وجودة عالية. اطلب الآن عبر واتساب والدفع عند الاستلام.
         </p>
 
-        <div class="order-panel" id="order">
-          <div class="price-block">
+        <div class="buy-area">
+          <a href="#" id="whatsappBtn" class="buy-btn" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp"></i>
+            BUY NOW
+          </a>
+
+          <div class="price-box">
             <span class="old-price">DH 200</span>
             <strong id="totalPrice">DH 600</strong>
           </div>
-
-          <div class="qty-control">
-            <button type="button" id="minusBtn">−</button>
-            <span id="qtyValue">4</span>
-            <button type="button" id="plusBtn">+</button>
-          </div>
         </div>
 
-        <a class="buy-btn" id="whatsappBtn" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-whatsapp"></i>
-          BUY NOW
-        </a>
+        <div class="qty-box">
+          <button type="button" id="minusBtn">−</button>
+          <span id="qtyValue">4</span>
+          <button type="button" id="plusBtn">+</button>
+        </div>
       </div>
 
-      <div class="hero-art" id="product">
-        <div class="shape shape-big">
-          <img src="product1.jpg" alt="Asel Sultan product" class="slide active">
-          <img src="product2.jpg" alt="Asel Sultan product" class="slide">
-          <img src="product3.jpg" alt="Asel Sultan product" class="slide">
+      <div class="right-content" id="product">
+        <div class="honey-shape">
+          <img src="product1.jpg" class="slide active" alt="Asel Sultan Product 1">
+          <img src="product2.jpg" class="slide" alt="Asel Sultan Product 2">
+          <img src="product3.jpg" class="slide" alt="Asel Sultan Product 3">
         </div>
 
-        <div class="shape shape-small">
-          <img src="product1.jpg" alt="Asel Sultan honey">
+        <div class="top-circle">
+          <img src="product1.jpg" alt="Asel Sultan small product">
         </div>
 
-        <div class="slash slash-1"></div>
-        <div class="slash slash-2"></div>
-        <div class="slash slash-3"></div>
+        <div class="cut-line line-one"></div>
+        <div class="cut-line line-two"></div>
+        <div class="cut-line line-three"></div>
 
         <div class="thumbs">
-          <button class="thumb active" data-slide="0" type="button">
-            <img src="product1.jpg" alt="Product 1">
+          <button class="thumb active" type="button" data-slide="0">
+            <img src="product1.jpg" alt="product 1">
           </button>
-          <button class="thumb" data-slide="1" type="button">
-            <img src="product2.jpg" alt="Product 2">
+          <button class="thumb" type="button" data-slide="1">
+            <img src="product2.jpg" alt="product 2">
           </button>
-          <button class="thumb" data-slide="2" type="button">
-            <img src="product3.jpg" alt="Product 3">
+          <button class="thumb" type="button" data-slide="2">
+            <img src="product3.jpg" alt="product 3">
           </button>
         </div>
       </div>
     </section>
-
-    <section class="features" id="about">
-      <article>
-        <i class="fa-solid fa-leaf"></i>
-        <strong>100% طبيعي</strong>
-      </article>
-      <article>
-        <i class="fa-solid fa-bolt"></i>
-        <strong>طاقة غنية</strong>
-      </article>
-      <article>
-        <i class="fa-solid fa-shield-heart"></i>
-        <strong>جودة مضمونة</strong>
-      </article>
-      <article>
-        <i class="fa-solid fa-truck-fast"></i>
-        <strong>توصيل سريع</strong>
-      </article>
-    </section>
-
   </main>
 
   <script src="script.js"></script>
