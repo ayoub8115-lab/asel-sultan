@@ -6,13 +6,12 @@ const totalPrice = document.getElementById("totalPrice");
 const whatsappBtn = document.getElementById("whatsappBtn");
 const minusBtn = document.getElementById("minusBtn");
 const plusBtn = document.getElementById("plusBtn");
-
 const slides = document.querySelectorAll(".slide");
 const thumbs = document.querySelectorAll(".thumb");
 
 let quantity = 4;
 let currentSlide = 0;
-let timer = null;
+let sliderTimer = null;
 
 function updateOrder() {
   const total = unitPrice * quantity;
@@ -40,16 +39,20 @@ function showSlide(index) {
 }
 
 function nextSlide() {
+  if (!slides.length) return;
   showSlide((currentSlide + 1) % slides.length);
 }
 
 function startSlider() {
   stopSlider();
-  timer = setInterval(nextSlide, 3500);
+  sliderTimer = setInterval(nextSlide, 3800);
 }
 
 function stopSlider() {
-  if (timer) clearInterval(timer);
+  if (sliderTimer) {
+    clearInterval(sliderTimer);
+    sliderTimer = null;
+  }
 }
 
 minusBtn.addEventListener("click", () => {
