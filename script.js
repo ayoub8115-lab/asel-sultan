@@ -7,12 +7,12 @@ const whatsappBtn = document.getElementById("whatsappBtn");
 const minusBtn = document.getElementById("minusBtn");
 const plusBtn = document.getElementById("plusBtn");
 
-const slides = document.querySelectorAll(".product-slide");
+const slides = document.querySelectorAll(".slide");
 const thumbs = document.querySelectorAll(".thumb");
 
 let quantity = 4;
 let currentSlide = 0;
-let sliderTimer = null;
+let timer = null;
 
 function updateOrder() {
   const total = unitPrice * quantity;
@@ -46,14 +46,11 @@ function nextSlide() {
 
 function startSlider() {
   stopSlider();
-  sliderTimer = setInterval(nextSlide, 3500);
+  timer = setInterval(nextSlide, 3500);
 }
 
 function stopSlider() {
-  if (sliderTimer) {
-    clearInterval(sliderTimer);
-    sliderTimer = null;
-  }
+  if (timer) clearInterval(timer);
 }
 
 minusBtn.addEventListener("click", () => {
@@ -74,11 +71,8 @@ thumbs.forEach((thumb) => {
 });
 
 document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    stopSlider();
-  } else {
-    startSlider();
-  }
+  if (document.hidden) stopSlider();
+  else startSlider();
 });
 
 updateOrder();
