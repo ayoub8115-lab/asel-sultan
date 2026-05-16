@@ -10,125 +10,124 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Baloo+Bhaijaan+2:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="page">
-    <section class="hero-card">
+  <main class="page-wrap">
+    <section class="shop-card">
 
-      <header class="navbar">
-        <a class="brand-icon" href="#" aria-label="Asel Sultan">
+      <header class="topbar">
+        <a href="#" class="home-logo" aria-label="Asel Sultan">
           <img src="logo.png" alt="Asel Sultan Logo">
         </a>
 
-        <nav class="nav-links" aria-label="القائمة">
-          <a href="#">الرئيسية</a>
-          <a href="#product" class="active">
-            <span>جديد</span>
-            المنتج
-          </a>
+        <nav class="menu" aria-label="Navigation">
+          <a href="#" class="active">الرئيسية</a>
+          <a href="#product"><span>New</span>المنتج</a>
           <a href="#about">الفوائد</a>
           <a href="#contact">تواصل</a>
         </nav>
 
-        <div class="nav-actions">
-          <div class="search-box">
-            <input type="text" placeholder="ابحث هنا" aria-label="بحث">
+        <div class="top-actions">
+          <div class="search">
+            <input type="text" placeholder="Type here" aria-label="Search">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
-          <a class="user-btn" href="#contact" aria-label="تواصل">
-            <i class="fa-solid fa-user"></i>
+
+          <a class="profile" href="#contact" aria-label="Contact">
+            <i class="fa-regular fa-user"></i>
           </a>
         </div>
       </header>
 
-      <div class="hero-grid">
-        <section class="hero-content">
-          <div class="eyebrow">عسل طبيعي فاخر</div>
+      <div class="hero">
+        <section class="copy">
+          <p class="mini-title">PREMIUM NATURAL HONEY</p>
 
           <h1>
             عسل السلطان
-            <span>Premium Honey</span>
+            <span>Asel Sultan</span>
           </h1>
 
-          <p class="tagline">طاقة طبيعية • مذاق غني • جودة مضمونة</p>
+          <p class="wide-text">TASTE LOCAL PREMIUM HONEY</p>
 
-          <p class="description">
-            تجربة شراء ناعمة وفاخرة لعسل السلطان، بألوان دافئة تناسب العسل والمنتج الطبيعي.
-          </p>
+          <div class="qty-card" id="product">
+            <span>Choose your quantity</span>
 
-          <div class="quantity-card" id="product">
-            <span>اختر الكمية</span>
-            <div class="qty-controls">
-              <button type="button" class="circle-btn minus" aria-label="نقص الكمية">
+            <div class="qty-row">
+              <button class="qty-circle" id="minusBtn" type="button" aria-label="Minus">
                 <i class="fa-solid fa-chevron-down"></i>
               </button>
+
               <strong id="qtyValue">4</strong>
-              <button type="button" class="circle-btn plus" aria-label="زود الكمية">
+
+              <button class="qty-circle" id="plusBtn" type="button" aria-label="Plus">
                 <i class="fa-solid fa-chevron-up"></i>
               </button>
             </div>
           </div>
 
-          <div class="price-line">
-            <span class="old-price">DH 200</span>
-            <span class="new-price" id="totalPrice">DH 600</span>
+          <div class="price-row">
+            <span class="old">DH 200</span>
+            <span class="new" id="totalPrice">DH 600</span>
           </div>
 
-          <a class="buy-btn" id="whatsappBtn" target="_blank" rel="noopener noreferrer">
-            <span class="cart-circle"><i class="fa-brands fa-whatsapp"></i></span>
-            اطلب عبر واتساب
+          <a class="buy-button" id="whatsappBtn" target="_blank" rel="noopener noreferrer">
+            <span class="icon-round">
+              <i class="fa-brands fa-whatsapp"></i>
+            </span>
+            <span>اطلب الآن</span>
           </a>
         </section>
 
-        <section class="hero-visual" aria-label="صور المنتج">
-          <div class="circle-bg"></div>
+        <section class="visual">
+          <div class="main-circle"></div>
 
-          <div class="product-frame">
-            <img src="product1.jpg" class="slide active" alt="Asel Sultan product image 1">
-            <img src="product2.jpg" class="slide" alt="Asel Sultan product image 2">
-            <img src="product3.jpg" class="slide" alt="Asel Sultan product image 3">
+          <div class="product-box">
+            <img src="product1.jpg" alt="Asel Sultan honey" class="product-slide active">
+            <img src="product2.jpg" alt="Asel Sultan honey" class="product-slide">
+            <img src="product3.jpg" alt="Asel Sultan honey" class="product-slide">
           </div>
 
-          <div class="bubble bubble-top">100% طبيعي</div>
-          <div class="bubble bubble-bottom">مذاق سلطاني!</div>
+          <div class="float-label label-top">100% Natural</div>
+          <div class="float-label label-bottom">Royal Taste!</div>
 
-          <div class="side-thumbs">
-            <button class="thumb active" data-slide="0" type="button">
-              <img src="product1.jpg" alt="صورة المنتج الأولى">
+          <div class="thumbs">
+            <button class="thumb active" type="button" data-slide="0">
+              <img src="product1.jpg" alt="Product image 1">
             </button>
-            <button class="thumb" data-slide="1" type="button">
-              <img src="product2.jpg" alt="صورة المنتج الثانية">
+            <button class="thumb" type="button" data-slide="1">
+              <img src="product2.jpg" alt="Product image 2">
             </button>
-            <button class="thumb" data-slide="2" type="button">
-              <img src="product3.jpg" alt="صورة المنتج الثالثة">
+            <button class="thumb" type="button" data-slide="2">
+              <img src="product3.jpg" alt="Product image 3">
             </button>
           </div>
 
-          <a class="continue-link" href="#about">
-            تابع التسوق
+          <a class="continue" href="#about">
+            Continue shopping
             <i class="fa-solid fa-arrow-left-long"></i>
           </a>
         </section>
       </div>
 
-      <section class="features" id="about">
-        <article>
+      <section class="benefits" id="about">
+        <div>
           <i class="fa-solid fa-leaf"></i>
           <strong>100% طبيعي</strong>
-        </article>
-        <article>
+        </div>
+        <div>
           <i class="fa-solid fa-bolt"></i>
-          <strong>طاقة يومية</strong>
-        </article>
-        <article>
-          <i class="fa-solid fa-shield-heart"></i>
-          <strong>جودة مضمونة</strong>
-        </article>
-        <article>
+          <strong>طاقة غنية</strong>
+        </div>
+        <div>
+          <i class="fa-solid fa-gem"></i>
+          <strong>جودة ممتازة</strong>
+        </div>
+        <div>
           <i class="fa-solid fa-truck-fast"></i>
           <strong>توصيل سريع</strong>
-        </article>
+        </div>
       </section>
 
     </section>
