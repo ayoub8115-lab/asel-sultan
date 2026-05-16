@@ -40,7 +40,6 @@ function showSlide(index) {
 }
 
 function nextSlide() {
-  if (!slides.length) return;
   showSlide((currentSlide + 1) % slides.length);
 }
 
