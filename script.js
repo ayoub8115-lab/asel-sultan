@@ -4,18 +4,19 @@ const phoneNumber = "212688134940";
 const qtyValue = document.getElementById("qtyValue");
 const totalPrice = document.getElementById("totalPrice");
 const whatsappBtn = document.getElementById("whatsappBtn");
-const minusBtn = document.querySelector(".minus");
-const plusBtn = document.querySelector(".plus");
+const minusBtn = document.getElementById("minusBtn");
+const plusBtn = document.getElementById("plusBtn");
 
-const slides = document.querySelectorAll(".product-frame .slide");
+const slides = document.querySelectorAll(".product-slide");
 const thumbs = document.querySelectorAll(".thumb");
 
 let quantity = 4;
 let currentSlide = 0;
-let timer = null;
+let sliderTimer = null;
 
 function updateOrder() {
   const total = unitPrice * quantity;
+
   qtyValue.textContent = quantity;
   totalPrice.textContent = `DH ${total}`;
 
@@ -45,11 +46,14 @@ function nextSlide() {
 
 function startSlider() {
   stopSlider();
-  timer = setInterval(nextSlide, 3500);
+  sliderTimer = setInterval(nextSlide, 3500);
 }
 
 function stopSlider() {
-  if (timer) clearInterval(timer);
+  if (sliderTimer) {
+    clearInterval(sliderTimer);
+    sliderTimer = null;
+  }
 }
 
 minusBtn.addEventListener("click", () => {
@@ -64,8 +68,7 @@ plusBtn.addEventListener("click", () => {
 
 thumbs.forEach((thumb) => {
   thumb.addEventListener("click", () => {
-    const index = Number(thumb.dataset.slide);
-    showSlide(index);
+    showSlide(Number(thumb.dataset.slide));
     startSlider();
   });
 });
