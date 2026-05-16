@@ -1,16 +1,16 @@
 :root{
-  --bg1:#f4a782;
-  --bg2:#f9c0a5;
-  --card:#fffdf9;
-  --soft:#fbefe4;
-  --soft2:#f6dfc9;
-  --peach:#f2a173;
-  --peach2:#f7b88d;
-  --gold:#d29a4a;
-  --gold2:#b87824;
+  --bg1:#d28a47;
+  --bg2:#f4d3a8;
+  --card:#fff4e7;
+  --soft:#f6e0c4;
+  --soft2:#e9bb78;
+  --peach:#d98c45;
+  --peach2:#efc078;
+  --gold:#c98727;
+  --gold2:#8f5217;
   --brown:#7a461a;
   --muted:#be8b5a;
-  --pink:#e27ca9;
+  --pink:#c87832;
   --green:#17b84d;
   --green2:#0e963b;
   --shadow:0 22px 55px rgba(95,48,18,.18);
@@ -30,8 +30,8 @@ body{
   font-family:"Cairo",sans-serif;
   color:var(--brown);
   background:
-    linear-gradient(135deg,rgba(135,72,28,.08) 25%,transparent 25%) 0 0/90px 90px,
-    linear-gradient(45deg,rgba(135,72,28,.06) 25%,transparent 25%) 0 0/90px 90px,
+    linear-gradient(135deg,rgba(115,58,16,.10) 25%,transparent 25%) 0 0/90px 90px,
+    linear-gradient(45deg,rgba(115,58,16,.08) 25%,transparent 25%) 0 0/90px 90px,
     linear-gradient(135deg,var(--bg2),var(--bg1));
 }
 
@@ -48,11 +48,39 @@ body{
   position:relative;
   overflow:hidden;
   border-radius:20px;
-  background:
-    radial-gradient(circle at 66% 46%,rgba(246,173,122,.24),transparent 32%),
-    linear-gradient(180deg,#fffdf9,#fffaf4);
+  background:#fff6eb;
   box-shadow:var(--shadow);
   padding:38px 58px 34px;
+}
+
+.shop-card::before{
+  content:"";
+  position:absolute;
+  inset:-26px;
+  background:
+    linear-gradient(90deg,rgba(255,246,235,.86),rgba(255,246,235,.58)),
+    url("background.jpg") center/cover no-repeat;
+  filter:blur(10px);
+  transform:scale(1.03);
+  z-index:0;
+}
+
+.shop-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 66% 46%,rgba(244,169,105,.40),transparent 31%),
+    linear-gradient(180deg,rgba(255,252,247,.82),rgba(255,242,227,.75));
+  z-index:1;
+  pointer-events:none;
+}
+
+.topbar,
+.hero,
+.benefits{
+  position:relative;
+  z-index:3;
 }
 
 .topbar{
@@ -181,15 +209,16 @@ body{
 h1{
   margin:0;
   font-family:"Baloo Bhaijaan 2","Cairo",sans-serif;
-  color:#e77daf;
+  color:#9a571d;
   font-size:clamp(4.4rem,8vw,9.6rem);
   line-height:.82;
   letter-spacing:-.04em;
+  text-shadow:0 8px 20px rgba(255,255,255,.45);
 }
 
 h1 span{
   display:block;
-  color:#d79c4c;
+  color:#d69b45;
   font-size:.55em;
   letter-spacing:0;
   margin-top:6px;
@@ -328,16 +357,33 @@ h1 span{
   aspect-ratio:1;
   border-radius:50%;
   background:
-    radial-gradient(circle at 42% 30%,rgba(255,237,210,.3),transparent 28%),
-    linear-gradient(180deg,#f7b58d,#ed9d66);
-  box-shadow:inset 0 0 90px rgba(255,255,255,.18);
+    linear-gradient(180deg,rgba(255,228,198,.38),rgba(211,139,65,.28)),
+    url("background.jpg") center/cover no-repeat;
+  box-shadow:
+    inset 0 0 90px rgba(255,255,255,.22),
+    0 24px 55px rgba(112,58,18,.14);
+  overflow:hidden;
+}
+
+.main-circle::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(180deg,rgba(255,224,190,.38),rgba(205,121,48,.28));
+  backdrop-filter:blur(2px);
 }
 
 .product-box{
   position:relative;
   z-index:3;
-  width:min(650px,80%);
-  height:560px;
+  width:min(610px,76%);
+  aspect-ratio:1;
+  height:auto;
+  border-radius:50%;
+  overflow:hidden;
+  background:rgba(255,244,231,.28);
+  box-shadow:0 28px 55px rgba(92,50,18,.18);
 }
 
 .product-slide{
@@ -345,10 +391,11 @@ h1 span{
   inset:0;
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
+  object-position:center;
   opacity:0;
-  transform:translateY(18px) scale(.98);
-  filter:drop-shadow(0 38px 32px rgba(82,42,13,.25));
+  transform:translateY(18px) scale(1.02);
+  filter:saturate(1.06) contrast(1.02);
   transition:.55s ease;
 }
 
@@ -373,13 +420,13 @@ h1 span{
 }
 
 .label-top{
-  top:100px;
-  right:95px;
+  top:96px;
+  right:82px;
 }
 
 .label-bottom{
-  bottom:165px;
-  left:28px;
+  bottom:155px;
+  left:22px;
 }
 
 .thumbs{
@@ -562,8 +609,8 @@ h1 span{
   }
 
   .product-box{
-    width:88%;
-    height:370px;
+    width:86%;
+    height:auto;
   }
 
   .float-label{
