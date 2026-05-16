@@ -1,73 +1,184 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asel Sultan</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asel Sultan Premium</title>
 
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<main class="page-shell">
+    <section class="hero">
 
-<div class="container">
+      <aside class="content-panel">
+        <div class="brand-row">
+          <div class="brand-meta">
+            <div class="offer-badge">
+              <span>🔥</span>
+              <span>عرض خاص لفترة محدودة</span>
+            </div>
 
-    <div class="product-card">
+            <div class="brand-subtitle">
+              <span class="line"></span>
+              <div>
+                منتج طبيعي فاخر
+                <span class="latin">Asel Sultan Premium</span>
+              </div>
+              <span class="line"></span>
+            </div>
+          </div>
 
-        <div class="image-section">
-            <img src="product1.jpg" alt="Asel Sultan" class="product-image">
+          <div class="logo-card">
+            <img src="logo.png" alt="Asel Sultan Premium Logo">
+          </div>
         </div>
 
-        <div class="content-section">
+        <h1>عسل السلطان</h1>
 
-            <div class="price-box">
-                <div class="old-price">
-                    <h3>السعر قبل التخفيض</h3>
-                    <span>DH 200</span>
-                </div>
+        <p class="description">
+          عسل طبيعي غني بالطاقة، بتصميم فاخر يبرز جودة المنتج ويمنحك تجربة شراء
+          <span class="accent">أوضح، أسرع، وأكثر احترافية</span>
+          على جميع الأجهزة.
+        </p>
 
-                <div class="new-price">
-                    <h3>السعر الحالي</h3>
-                    <span>DH 150</span>
-                </div>
+        <div class="chips">
+          <div class="chip"><span class="icon">🍃</span><span>100% طبيعي</span></div>
+          <div class="chip"><span class="icon">💧</span><span>طاقة غني</span></div>
+          <div class="chip"><span class="icon">⚡</span><span>مذاق غني</span></div>
+          <div class="chip"><span class="icon">💎</span><span>تصميم متقن</span></div>
+        </div>
+
+        <section class="order-box">
+          <div class="pricing-row">
+            <div class="price-card old-price">
+              <div class="price-label">السعر قبل التخفيض</div>
+              <div class="price-value">DH 200</div>
             </div>
 
-            <div class="quantity-box">
-                <h3>الكمية</h3>
-
-                <div class="buttons">
-                    <button onclick="setQuantity(1)">1</button>
-                    <button onclick="setQuantity(2)">2</button>
-                    <button onclick="setQuantity(3)">3</button>
-                    <button onclick="setQuantity(4)">4+</button>
-                </div>
+            <div class="price-card">
+              <div class="price-label">السعر الحالي</div>
+              <div class="price-value">DH 150</div>
             </div>
+          </div>
 
+          <div class="order-grid">
             <div class="total-box">
-                <h3>الإجمالي</h3>
-                <span id="totalPrice">DH 150</span>
+              <div>
+                <div class="total-label">الإجمالي</div>
+                <div class="total-value" id="totalPrice">DH 600</div>
+              </div>
             </div>
 
-            <div class="action-buttons">
+            <div class="qty-box">
+              <div class="field-title">الكمية</div>
+              <div class="qty-options">
+                <button class="qty-btn" type="button" data-qty="1">1</button>
+                <button class="qty-btn" type="button" data-qty="2">2</button>
+                <button class="qty-btn" type="button" data-qty="3">3</button>
+                <button class="qty-btn active" type="button" data-qty="4">+4</button>
+              </div>
+            </div>
+          </div>
 
-                <button class="confirm-btn">
-                    تأكيد الطلب
-                </button>
+          <div class="action-row">
+            <a
+              class="action-btn whatsapp-btn"
+              id="whatsappBtn"
+              href="https://wa.me/212688134940?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B3%D9%84%20%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div class="main">
+                <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M16.04 3C8.88 3 3.06 8.82 3.06 15.98c0 2.29.6 4.52 1.74 6.48L3 29l6.7-1.76a12.9 12.9 0 0 0 6.34 1.65h.01c7.16 0 12.98-5.82 12.98-12.98C29.03 8.82 23.2 3 16.04 3Zm0 23.7h-.01c-1.9 0-3.76-.51-5.38-1.48l-.39-.23-3.98 1.04 1.06-3.87-.25-.4a10.67 10.67 0 0 1-1.64-5.78c0-5.84 4.75-10.6 10.6-10.6 2.83 0 5.49 1.1 7.49 3.11a10.52 10.52 0 0 1 3.1 7.49c0 5.84-4.76 10.6-10.6 10.6Zm5.82-7.94c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.58-1.59-.95-.85-1.6-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.34-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.07 1.3 3.28c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"/>
+                </svg>
+                <span>اطلب عبر واتساب</span>
+              </div>
+              <div class="sub">تواصل مباشر وسريع</div>
+            </a>
 
-                <a id="whatsappBtn" class="whatsapp-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    اطلب عبر واتساب
-                </a>
+            <button class="action-btn confirm-btn" id="confirmBtn" type="button">
+              <span style="font-size: 1.4rem;">👜</span>
+              <span>تأكيد الطلب</span>
+            </button>
+          </div>
 
+          <div class="bottom-features">
+            <div class="bottom-item">
+              <div class="icon-wrap">💵</div>
+              <div class="text">
+                <strong>دفع عند الاستلام</strong>
+                <span>راحة وأمان</span>
+              </div>
             </div>
 
+            <div class="bottom-item">
+              <div class="icon-wrap">🛡️</div>
+              <div class="text">
+                <strong>جودة مضمونة</strong>
+                <span>أعلى معايير الجودة</span>
+              </div>
+            </div>
+
+            <div class="bottom-item">
+              <div class="icon-wrap">🚚</div>
+              <div class="text">
+                <strong>توصيل سريع</strong>
+                <span>لكل المدن</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <aside class="visual-panel">
+        <div class="mini-card">
+          <div class="topline">
+            <span>👑</span>
+            <span>عسل طبيعي</span>
+          </div>
+          <p>مظهر فاخر وثقة أكبر للعميل</p>
         </div>
 
-    </div>
+        <div class="product-visual">
+          <img src="product1.jpg" alt="منتج عسل السلطان 1" class="slide active">
+          <img src="product2.jpg" alt="منتج عسل السلطان 2" class="slide">
+          <img src="product3.jpg" alt="منتج عسل السلطان 3" class="slide">
 
-</div>
+          <div class="slider-dots">
+            <button class="slider-dot active" type="button" data-slide="0" aria-label="الصورة الأولى"></button>
+            <button class="slider-dot" type="button" data-slide="1" aria-label="الصورة الثانية"></button>
+            <button class="slider-dot" type="button" data-slide="2" aria-label="الصورة الثالثة"></button>
+          </div>
+        </div>
 
-<script src="script.js"></script>
+        <div class="left-features">
+          <div class="left-feature">
+            <div class="icon">💎</div>
+            <div class="label">تصميم متقن</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">💧</div>
+            <div class="label">مذاق غني</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">⚡</div>
+            <div class="label">طاقة يومية</div>
+          </div>
+          <div class="left-feature">
+            <div class="icon">🍃</div>
+            <div class="label">100% طبيعي</div>
+          </div>
+        </div>
+      </aside>
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
