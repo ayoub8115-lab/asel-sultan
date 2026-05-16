@@ -74,11 +74,8 @@ thumbs.forEach((thumb) => {
 });
 
 document.addEventListener("visibilitychange", () => {
-  if (document.hidden) {
-    stopSlider();
-  } else {
-    startSlider();
-  }
+  if (document.hidden) stopSlider();
+  else startSlider();
 });
 
 updateOrder();
